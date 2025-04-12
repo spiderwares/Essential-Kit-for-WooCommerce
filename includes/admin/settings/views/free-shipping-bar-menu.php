@@ -19,7 +19,7 @@ defined( 'ABSPATH' ) || exit;
             <a href="<?php echo esc_url( admin_url( 'admin.php?page=ekwc-free-shipping-bar&tab=position' ) ); ?>" 
                class="<?php echo esc_attr( $active_tab === 'position' ? 'nav-tab nav-tab-active' : 'nav-tab' ); ?>">
                 <img src="<?php echo esc_url( EKWC_URL . 'assets/img/position.svg'); ?>" />
-                <?php esc_html_e( 'Shipping Bar Position', 'essential-kit-for-woocommerce' ); ?>
+                <?php esc_html_e( 'Shipping Bar', 'essential-kit-for-woocommerce' ); ?>
             </a>
 
             <!-- Style settings tab -->

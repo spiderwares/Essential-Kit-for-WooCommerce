@@ -72,6 +72,7 @@ if ( ! class_exists( 'EKWC_Quick_View_Frontend' ) ) :
             $general_style  = get_option( 'ekwc_general_setting', array() );
             $wishlist_style = get_option( 'ekwc_wishlist_setting', array() );
             $compare_style  = get_option( 'ekwc_compare_style', array() );
+            $shipping_style = get_option( 'ekwc_shipping_bar_settings', array() );
 
             ob_start();
             wc_get_template( 
@@ -80,7 +81,8 @@ if ( ! class_exists( 'EKWC_Quick_View_Frontend' ) ) :
                     'general_style'     => $general_style,
                     'quick_view_style'  => $this->settings,
                     'wishlist_style'    => $wishlist_style,
-                    'compare_style'    => $compare_style,
+                    'shipping_style'    => $shipping_style,
+                    'compare_style'     => $compare_style,
                 ),
                 'essential-kit-for-woocommerce/',
                 EKWC_TEMPLATE_PATH

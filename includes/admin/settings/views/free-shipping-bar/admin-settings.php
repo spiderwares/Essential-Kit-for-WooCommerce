@@ -196,14 +196,6 @@ if( ! class_exists( 'EKWC_Shipping_Admin_Settings' ) ):
                     'style'      => 'enable_progress.yes',
                     'extra_class'=> 'enable_progress',
                 ),
-                'custom_css' => array(
-                    'title'      => esc_html__('Custom CSS', 'essential-kit-for-woocommerce'),
-                    'field_type' => 'ekwctextarea',
-                    'name'       => 'ekwc_shipping_bar_settings[custom_css]',
-                    'default'    => '',
-                    'rows'       => 8,
-                    'desc'       => esc_html__('Add your custom CSS styles.', 'essential-kit-for-woocommerce'),
-                ),
                 'single_product_bar_style' => array(
                     'title'      => esc_html__('Single Product Bar Style', 'essential-kit-for-woocommerce'),
                     'field_type' => 'ekwctitle',
@@ -298,6 +290,19 @@ if( ! class_exists( 'EKWC_Shipping_Admin_Settings' ) ):
                     'field_type'  => 'ekwcbuypro',
                     'pro_link'    => EKWC_PRO_VERSION_URL,
                     'default'     => 'no',
+                ),
+                'custom_css_title' => array(
+                    'title'      => esc_html__('Custom CSS', 'essential-kit-for-woocommerce'),
+                    'field_type' => 'ekwctitle',
+                    'default'    => '',
+                ),
+                'custom_css' => array(
+                    'title'      => esc_html__('Custom CSS', 'essential-kit-for-woocommerce'),
+                    'field_type' => 'ekwctextarea',
+                    'name'       => 'ekwc_shipping_bar_settings[custom_css]',
+                    'default'    => '',
+                    'rows'       => 8,
+                    'desc'       => esc_html__('Add your custom CSS styles.', 'essential-kit-for-woocommerce'),
                 ),
             );
         

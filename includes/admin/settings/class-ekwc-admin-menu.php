@@ -75,18 +75,19 @@ if ( ! class_exists( 'EKWC_Admin_Menu' ) ) :
          * @return mixed Sanitized input value.
          */
         public function sanitize_input( $input ) {
+
             if ( is_array( $input ) ) :
                 $sanitized = [];
 
                 foreach ( $input as $key => $value ) :
-                    // Check if this field is a textarea type field by key name pattern.
-                    if ( strpos( $key, 'textarea' ) !== false || strpos( $key, 'description' ) !== false || strpos( $key, 'content' ) !== false ) :
+                    if ( is_array( $value ) ) :
+                        $sanitized[ $key ] = $this->sanitize_input( $value );
+                    elseif ( strpos( $key, 'textarea' ) !== false || strpos( $key, 'description' ) !== false || strpos( $key, 'content' ) !== false ) :
                         $sanitized[ $key ] = sanitize_textarea_field( $value );
                     else :
                         $sanitized[ $key ] = sanitize_text_field( $value );
                     endif;
                 endforeach;
-
                 return $sanitized;
             endif;
 

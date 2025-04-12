@@ -24,7 +24,7 @@ $options = get_option( 'ekwc_shipping_bar_settings', true );
 wc_get_template(
     'fields/setting-forms.php',
     array(
-        'title'   => 'Style',
+        'title'   => 'Topbar Style',
         'metaKey' => 'ekwc_shipping_bar_settings',
         'fields'  => $fields,
         'options' => $options,

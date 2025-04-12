@@ -301,22 +301,27 @@ if ( ! class_exists( 'EKWC_Shipping_Bar_Frontend' ) ) :
 				return;
 			endif;
 
-			$shipping_option  = $this->get_free_shipping_bar_pricing_data();
-			$giftbox_style    = $this->settings->get_option( 'giftbox_style', 'style1' );
-			$width 			  = ( ! empty( $shipping_option['order_min_amount'] ) && $shipping_option['order_min_amount'] != 0 ) ? ( $shipping_option['total'] / $shipping_option['order_min_amount'] * 100 ) : 0;
-			$show_giftbox     = $this->settings->get_option( 'enable_gift_box' );
-			$bg_pcolor        = $this->settings->get_option( 'progress_bg_color', '#aaaaaa' );
-			$curr_bg_pcolor   = $this->settings->get_option( 'curr_progress_color', '#7f54b3' );
-			$bg_color         = $this->settings->get_option( 'bg_color', '#d2f2ff' );
-			$text_color       = $this->settings->get_option( 'text_color', '#d2f2ff' );
-			$link_color       = $this->settings->get_option( 'link_color', '#d2f2ff' );
-			$giftbox_position = $this->settings->get_option( 'giftbox_position', 'bottom_right' );
+			$shipping_option  	= $this->get_free_shipping_bar_pricing_data();
+			$giftbox_style    	= $this->settings->get_option( 'giftbox_style', 'style1' );
+			$width 			  	= ( ! empty( $shipping_option['order_min_amount'] ) && $shipping_option['order_min_amount'] != 0 ) ? ( $shipping_option['total'] / $shipping_option['order_min_amount'] * 100 ) : 0;
+			$show_giftbox     	= $this->settings->get_option( 'enable_gift_box' );
+			$bg_pcolor        	= $this->settings->get_option( 'progress_bg_color', '#aaaaaa' );
+			$curr_bg_pcolor   	= $this->settings->get_option( 'curr_progress_color', '#7f54b3' );
+			$bg_color         	= $this->settings->get_option( 'bg_color', '#d2f2ff' );
+			$text_color       	= $this->settings->get_option( 'text_color', '#d2f2ff' );
+			$link_color       	= $this->settings->get_option( 'link_color', '#d2f2ff' );
+			$giftbox_position 	= $this->settings->get_option( 'giftbox_position', 'bottom_right' );
+			$giftbox_icon	  	= $this->settings->get_option( 'gift_icon_url' );
+			$success_msg  		= $this->get_success_message();
+			$announcement_msg 	= isset( $shipping_option['order_min_amount'] ) ? $this->get_announcement_message( $shipping_option['order_min_amount'] ) : '';
+			
 
 			if ( $show_giftbox === 'yes' && $enable ) :
 				wc_get_template(
 					'giftbox/content-giftbox-icon.php',
 					array(
-						'giftbox_position' => $giftbox_position,
+						'giftbox_position' 	=> $giftbox_position,
+						'giftbox_icon'		=> $giftbox_icon,
 					),
 					'woocommerce/',
                 	EKWC_PATH . 'templates/free-shipping-bar/'
@@ -324,14 +329,16 @@ if ( ! class_exists( 'EKWC_Shipping_Bar_Frontend' ) ) :
 				wc_get_template(
 					'giftbox/content-giftbox-' . $giftbox_style . '.php',
 					array(
-						'shipping_option' => $shipping_option,
-						'width'           => $width,
-						'bg_color'        => $bg_color,
-						'text_color'      => $text_color,
-						'link_color'      => $link_color,
-						'bg_pcolor'       => $bg_pcolor,
-						'curr_bg_pcolor'  => $curr_bg_pcolor,
-						'giftbox_style'   => $giftbox_style,
+						'shipping_option' 	=> $shipping_option,
+						'width'           	=> $width,
+						'bg_color'        	=> $bg_color,
+						'text_color'      	=> $text_color,
+						'link_color'      	=> $link_color,
+						'bg_pcolor'       	=> $bg_pcolor,
+						'curr_bg_pcolor'  	=> $curr_bg_pcolor,
+						'giftbox_style'   	=> $giftbox_style,
+						'success_msg'		=> $success_msg,
+						'announcement_msg'	=> $announcement_msg
 					),
 					'woocommerce/',
                 	EKWC_PATH . 'templates/free-shipping-bar/'

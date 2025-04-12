@@ -9,6 +9,7 @@ endif;
 $general_style           = isset( $general_style ) ? $general_style : array();
 $quick_view_style        = isset( $quick_view_style ) ? $quick_view_style : array();
 $wishlist_style          = isset( $wishlist_style ) ? $wishlist_style : array();
+$shipping_style          = isset( $shipping_style ) ? $shipping_style : array();
 $compare_style           = isset( $compare_style ) ? $compare_style : array();
 
 $wl_btn_text             = isset( $wishlist_style['wishlist_btn_text_color'] ) ? esc_attr( $wishlist_style['wishlist_btn_text_color'] ) : '#cc5500';
@@ -46,7 +47,11 @@ $compare_add_to_cart_text= isset( $compare_style[ 'style_1_button_text_color' ] 
 
 
 $icon_hover_bg_color     = isset( $general_style[ 'icon_hover_bg_color' ] ) ? esc_attr( $general_style[ 'icon_hover_bg_color' ] ) : '#274c4f';
-$icon_hover_color        = isset( $general_style[ 'icon_bg_color' ] ) ? esc_attr( $general_style[ 'icon_bg_color' ] ) : '#ffffff'; ?>
+$icon_hover_color        = isset( $general_style[ 'icon_bg_color' ] ) ? esc_attr( $general_style[ 'icon_bg_color' ] ) : '#ffffff'; 
+
+if ( isset( $shipping_style['custom_css'] ) && ! empty( $shipping_style['custom_css'] ) ) :
+    echo wp_strip_all_tags( $shipping_style['custom_css'], true );
+endif; ?>
 
 .ekwc-quick-view-body {
     background-color: <?php echo esc_attr( $background_color ); ?>;
