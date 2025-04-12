@@ -1,8 +1,7 @@
 # Essential Kit For Woocommerce
-
-**Contributors:** jthemesstudio  
+**Contributors:** jthemesstudio, spiderwares
 **Requires at least:** 5.2  
-**Tested up to:** 6.7  
+**Tested up to:** 6.8
 **Requires PHP:** 7.4  
 **Version:** 1.0.0  
 **Stable tag:** 1.0.0  
@@ -18,75 +17,174 @@
 
 Enhance your WooCommerce store with essential tools like Product Compare, Wishlist, Quick View, Free Shipping Bar, and more. 🚀 Boost user experience and drive sales with this all-in-one solution. Fully customizable and optimized for performance. 💯
 
-### Key Features
+## 🚀 Key Features
 
-– **🔄 Product Compare:**  
-  Enable customers to compare multiple products side by side, helping them make informed purchase decisions.
+- **Product Compare**  
+  Allow customers to compare products side-by-side, helping them make informed buying decisions.
 
-– **💖 Wishlist:**  
-  Allow users to save their favorite products for later purchases, increasing return visits and conversion rates.
+- **Wishlist**  
+  Enable customers to save products to a wishlist for easy access later, share with friends, and increase retention.
 
-– **👀 Quick View:**  
-  Enable customers to quickly view product details, images, and add-to-cart options in a pop-up without leaving the current page.
+- **Free Shipping Bar**  
+  Encourage users to reach free shipping thresholds with a customizable progress bar.
 
-– **🚚 Free Shipping Bar:**  
-  Display a dynamic progress bar showing how much more the customer needs to spend to qualify for free shipping, boosting average order value.
+- **Quick View**  
+  Let customers preview product details without leaving the current page, improving user experience and sales.
 
-– **⭐ Product Ratings & Reviews:**  
-  Show product ratings and reviews to provide social proof and help customers make informed purchasing decisions.
 
-– **⚡ Ajax Add to Cart:**  
-  Improve shopping experience by allowing customers to add products to their cart without refreshing the page.
+## 📦 Features Breakdown
 
-– **🎨 Easy Customization:**  
-  Customize each feature individually through an intuitive settings panel to match your store's design and needs.
+### 🌟 **Product Compare**
 
-– **📱 Mobile Responsive:**  
-  Fully optimized for mobile devices, ensuring a seamless shopping experience across all screen sizes.
+#### Free Features:
+- Set custom **Compare** and **Remove** button text.
+- **Lightbox** popup for product comparison.
+- Show detailed product data: 
+  - Image, Title, Price, Rating, SKU, Description
+  - Availability, Weight, Dimensions
+  - Add to Cart Button, Custom Attributes
+- **Table customization**: Adjust comparison table title and content.
 
-– **🌎 Multi-Language Support:**  
-  Supports multiple languages, allowing international customers to shop in their preferred language.
+#### Pro Features:
+- **Meta fields**: Add custom product meta to the comparison table.
+- **Table Styles**: Predefined styles for horizontal/vertical layouts.
+- **Comparison Highlights**: Show differences and hide similarities between products.
+- **Shareable Comparison**: Generate a shareable URL for product comparison.
+- **Sticky Bar**: Always-visible comparison bar for enhanced user experience.
 
-– **🖼️ Slick Library Integration:**  
-  Uses the **Slick** library for smooth, responsive sliders to enhance product display and user experience.
+#### SEO Benefits:
+- Encourages longer user interaction and increased time on the site, contributing to better SEO rankings.
+- Shareable comparison URLs can generate backlinks to your site.
 
-– **📄 Dompdf for PDF Generation:**  
-  Includes **Dompdf** for generating PDFs, allowing users to create downloadable product lists, wishlists, and other documents easily.
 
-## Installation Instructions
+### 🚚 **Free Shipping Bar**
 
-1. 📌 Download the plugin ZIP file.
-2. 🔧 Navigate to **Plugins > Add New** in your WordPress admin panel.
-3. 📂 Click **Upload Plugin**, select the downloaded ZIP file, and install it.
-4. ✅ Once installed, activate the plugin.
-5. ⚙️ Go to **WooCommerce > Essential Kit** to configure the settings according to your preferences.
+#### Free Features:
+- Enable or disable the **Free Shipping Bar**.
+- Target specific **shipping zones** for more tailored messaging.
+- **Mobile-optimized** display for better user engagement.
+- Customizable text, background, and link colors.
+- **Progress bar styling**: Adjust the look of the progress bar.
+- **CSS support**: Customize further with your own styles.
+- **Notifications**: Display success, error, or announcement notifications.
+- **Visibility control**: Show or hide the bar on Cart, Checkout, or Product Pages.
 
-## 📘 Usage Guide
+#### Pro Features:
+- Display the **Free Shipping Bar** on Mini Cart, Cart, Checkout, and Product Pages.
+- Advanced styling for each page type.
+- **Auto-close timer** and close button for user control.
+- **Gift box styling** options.
 
-– **🔄 Product Compare:** Add a compare button to product listings, allowing customers to easily compare features and prices of different products.  
-– **💖 Wishlist:** Enable customers to create and manage their own wishlists without additional database tables.  
-– **👀 Quick View:** Provide customers with detailed product information in a pop-up window, streamlining their shopping experience.  
-– **🚚 Free Shipping Bar:** Customize the free shipping progress bar to display real-time updates on how close the customer is to receiving free shipping.
+#### SEO Benefits:
+- Keeps users engaged and encourages further browsing, reducing bounce rates.
+- Increases conversions as users are motivated to reach free shipping thresholds.
+
+
+### 💖 **Wishlist**
+
+#### Free Features:
+- Display product **price**, **stock status**, and **date added** to wishlist.
+- Add custom **wishlist button styles** and icons.
+- Social sharing options: **Facebook**, **X (Twitter)**, **Pinterest**, **WhatsApp**, and **Email**.
+- **Remove icons/buttons** for easy removal from wishlist.
+- Customize **wishlist labels** like "Add to Wishlist", "Product Added", and more.
+
+#### Pro Features:
+- Create and manage **multiple wishlists**.
+- Adjust product quantity before adding to the cart.
+- **Download Wishlist as PDF**.
+- Set **privacy**: public or private wishlists.
+- **Remove product from wishlist** after adding it to the cart.
+
+#### SEO Benefits:
+- Increases user engagement with wishlist sharing options, driving traffic and potential backlinks to your site.
+- Helps reduce cart abandonment by allowing users to revisit their wishlist.
+
+
+### 👁️ **Quick View**
+
+#### Free Features:
+- Enable **Quick View** on mobile devices.
+- Customize **product image** size for better presentation.
+- Choose between **short** or **full product descriptions** in Quick View.
+- Customizable **Quick View button** and modal styling.
+- **Overlay color** and **close icon color** customization.
+
+#### Pro Features:
+- Quick view on **Wishlist items**.
+- Multiple **Quick View styles** to match your branding.
+- Customize **product details**: Title, Price, Meta, Rating, and Add to Cart Button.
+- **Popup behavior**: auto-close after adding to cart or redirect to checkout.
+- Social sharing for **Facebook**, **X (Twitter)**, **Pinterest**, **Email**, and **WhatsApp**.
+
+#### SEO Benefits:
+- The **Quick View** feature increases user interaction and decreases bounce rates by enabling faster navigation, which can contribute positively to SEO.
+
+
+## 🎥 **Watch in Action**
+
+Experience **Essential Kit for WooCommerce** in action:  
+<iframe width="800" height="375" src="https://www.youtube.com/embed/f0auIwzrQu8?si=0RxoCk0tnaJk5coV" frameborder="0" allowfullscreen></iframe>
+
+
+## Screenshots
+
+1. **General Settings Panel:**  Enable/disable icons and toggle plugin modules.
+2. **Icon/Button Position Settings:**  Configure display positions on the single product and shop pages.
+3. **Icon/Button Frontend Display:**  How the button or icon appears on the shop page.
+4. **Product Compare – Premium Settings:**  Advanced configuration options for the product comparison feature.
+5. **Product Compare Table Preview:**  Frontend design preview of the product comparison table.
+6. **Free Shipping Bar Position Settings:**  Set the display position of the shipping bar on checkout, cart, single product, and shop pages.
+7. **Free Shipping Bar Preview:**  Frontend design preview of the free shipping bar.
+8. **Quick View – General Settings:**  Configure general settings for the quick view feature.
+9. **Quick View Popup Design Preview:**  How the quick view popup appears on the frontend.
+10. **Wishlist – General Settings:**  General configuration options for the wishlist module.
+11. **Wishlist Page Settings:**  Customize the wishlist page layout and behavior.
+12. **Wishlist Table Preview** Frontend preview of the wishlist items table.
+
+
+## **Installation**
+
+1. **Upload the Plugin**  
+   Download the `.zip` file and go to **WordPress Admin → Plugins → Add New → Upload Plugin**.
+   
+2. **Activate**  
+   Click **Activate** to enable the plugin.
+   
+3. **Configure Settings**  
+   Navigate to **WooCommerce → Essential Kit** to adjust your settings.
+
 
 ## Frequently Asked Questions
 
-### ❓ Is the plugin compatible with all WooCommerce themes?
-✅ Yes, Essential Kit for WooCommerce is compatible with most WooCommerce-supported themes.  
+**Is this plugin compatible with all WooCommerce themes?**  
+Yes, it works seamlessly with all WooCommerce-compatible themes.
 
-### ❓ Can I enable or disable specific features of the plugin?
-✅ Yes, you can enable or disable individual features directly from the settings panel.
+**Can I activate only the features I need?**  
+Absolutely! You can enable or disable any module (Product Compare, Free Shipping Bar, Wishlist, Quick View).
 
-### ❓ Will this plugin impact my website's performance?
-✅ No, Essential Kit for WooCommerce is optimized for minimal impact on website performance.
+**How can I upgrade to the Pro version?**  
+Simply go to **WooCommerce → Essential Kit** settings or visit our website for upgrade details.
 
-## Support
-
-For support, documentation, or additional information, visit: **[JThemes Studio](https://jthemes.com/)**
 
 ## Changelog
 
-### 🔹 Version 1.0.0
-– 🚀 Initial release featuring **Product Compare, Wishlist, Quick View, Free Shipping Bar, Product Ratings, Ajax Add to Cart**, and more.
+**1.0.0**  
+- Initial release with:  
+  * Product Compare (Free + Pro)  
+  * Free Shipping Bar (Free + Pro)  
+  * Wishlist (Free + Pro)  
+  * Quick View (Free + Pro)
+
+
+## **Support**
+
+For any questions or issues, visit our **[Support Page](https://wordpress.org/support/plugin/essential-kit-for-woocommerce)** .
+
+
+## **License**
+
+Licensed under the **GPLv2 or later**. See full license details at [GPL License](https://www.gnu.org/licenses/gpl-2.0.html).
 
 ## Upgrade Notice
 
