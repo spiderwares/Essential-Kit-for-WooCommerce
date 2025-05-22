@@ -3,8 +3,8 @@
 **Requires at least:** 5.2  
 **Tested up to:** 6.8
 **Requires PHP:** 7.4  
-**Version:** 1.0.7
-**Stable tag:** 1.0.7
+**Version:** 1.0.8
+**Stable tag:** 1.0.8
 **License:** GPL v2 or later  
 **License URI:** [https://www.gnu.org/licenses/gpl-2.0.html](https://www.gnu.org/licenses/gpl-2.0.html)  
 **Tags:** WooCommerce, Product Compare, Wishlist, Quick View, Free Shipping Bar  
@@ -19,9 +19,9 @@ Enhance your WooCommerce store with essential tools like Product Compare, Wishli
 
 [**Premium**](https://codecanyon.net/item/essential-kit-for-woocommerce/57741240) |  [**Demo**](https://plugins.jthemesstudio.com/essential-kit-for-woocommerce/) |   [**Documentation**](https://plugins.jthemesstudio.com/docs/essential-kit-for-woocommerce/)
 
-##  **Key Features**
+## 🚀 Key Features
 
-### Product Compare
+#### Product Compare
 
 ⭐ Add Compare button, link, or icon with custom text
 ⭐ Show Compare button on Single Product, Shop, and Archive pages
@@ -39,7 +39,7 @@ Enhance your WooCommerce store with essential tools like Product Compare, Wishli
 ⭐ User-friendly customization panel
 ⭐ 24×7 support available for the free version
 
-### Free Shipping Bar
+#### Free Shipping Bar
 
 ⭐ Enable or disable the Free Shipping Bar globally
 ⭐ Select shipping zones for targeted display
@@ -53,7 +53,7 @@ Enhance your WooCommerce store with essential tools like Product Compare, Wishli
 ⭐ Add announcement, purchase, success, or error notifications
 ⭐ Add custom CSS for deeper styling Control
 
-### Wishlist
+#### Wishlist
 
 ⭐ Add Wishlist button, custom icons and styles
 ⭐ Display wishlist button on Shop and Single Product pages
@@ -69,7 +69,7 @@ Enhance your WooCommerce store with essential tools like Product Compare, Wishli
 ⭐ Fully responsive and compatible with all themes
 ⭐ Developer-friendly template override system
 
-### Quick View
+#### Quick View
 
 ⭐ Enable Quick View on mobile and desktop
 ⭐ Choose between short or full product descriptions
@@ -83,7 +83,7 @@ Enhance your WooCommerce store with essential tools like Product Compare, Wishli
 ⭐ Template override support
 
 
-### Size Chart
+#### Size Chart
 
 ⭐ Display interactive size charts in a popup using Featherlight or Magnific for smooth user experience
 ⭐ Choose from multiple animation effects (Zoom In, Fade, Slide, 3D Unfold, etc.) to match your brand style
@@ -102,9 +102,9 @@ Enhance your WooCommerce store with essential tools like Product Compare, Wishli
 
 
 
-## **Pro Features**
+## 🔥 Pro Features
 
-### Product Compare
+#### Product Compare
 
 ⭐ Add product meta fields to the comparison table
 ⭐ Predefined styling options for compare tables
@@ -119,7 +119,7 @@ Enhance your WooCommerce store with essential tools like Product Compare, Wishli
 ⭐ Style every element of the comparison table individually
 ⭐ Set custom product image sizes for the table
 
-### Free Shipping Bar
+#### Free Shipping Bar
 
 ⭐ Show shipping bar on Mini Cart, Cart, Checkout, and Single Product pages
 ⭐ Predefined styles for each page location (Mini Cart, Cart, Checkout)
@@ -129,7 +129,7 @@ Enhance your WooCommerce store with essential tools like Product Compare, Wishli
 ⭐ Add predefined gift box styles to enhance visual appeal
 ⭐ Create a more immersive shopping incentive experience
 
-### Wishlist
+#### Wishlist
 
 ⭐ Create and manage multiple wishlists
 ⭐ Set product quantity before adding to cart
@@ -138,7 +138,7 @@ Enhance your WooCommerce store with essential tools like Product Compare, Wishli
 ⭐ Automatically remove items from wishlist after adding to cart
 ⭐ Priority 24×7 premium support
 
-### Quick View
+#### Quick View
 
 ⭐ Enable Quick View on wishlist items
 ⭐ Choose from multiple Quick View popup styles
@@ -150,7 +150,7 @@ Enhance your WooCommerce store with essential tools like Product Compare, Wishli
 ⭐ Fully customize layout for maximum branding compatibility
 ⭐ Priority 24×7 premium support
 
-### Size Chart
+#### Size Chart
 ⭐ Display size charts using advanced combined logic — show charts based on multiple criteria at once (product category, tags, shipping class) for precise targeting
 ⭐ Unlock detailed display rules to control chart visibility by:
 ⭐ Product Type (Simple, Variable, Grouped, External)

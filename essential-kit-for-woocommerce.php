@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Essential Kit For Woocommerce
  * Description:       A powerful, all-in-one toolkit to enhance your WooCommerce store. Includes must-have features like product compare, quick view, wishlist, free shipping bar, multi-currency support, and more — all designed to boost conversions and improve the customer experience.
- * Version:           1.0.7
+ * Version:           1.0.8
  * Requires at least: 5.2
  * Requires PHP:      7.4
  * Author:            jthemesstudio
@@ -26,7 +26,7 @@ if ( ! defined( 'EKWC_BASENAME' ) ) :
 endif;
 
 if ( ! defined( 'EKWC_VERSION' ) ) :
-    define( 'EKWC_VERSION', '1.0.7' ); // Define the plugin version.
+    define( 'EKWC_VERSION', '1.0.8' ); // Define the plugin version.
 endif;
 
 if ( ! defined( 'EKWC_PATH' ) ) :
