@@ -149,7 +149,7 @@ if ( ! function_exists( 'ekwc_get_wishlist_product_ids' ) ) :
                 ) 
             );
         else :
-            $session_id = isset( $_COOKIE['etwc_wishlist_session'] ) ? sanitize_text_field( wp_unslash( $_COOKIE['etwc_wishlist_session'] ) )  : '';
+            $session_id = isset( $_COOKIE['ekwc_wishlist_session'] ) ? sanitize_text_field( wp_unslash( $_COOKIE['ekwc_wishlist_session'] ) )  : '';
 
             if ( ! empty( $session_id ) ) :
                 // Fetch wishlist items from database for guest users
@@ -199,7 +199,7 @@ if ( ! function_exists( 'ekwc_get_user_wishlists' ) ) :
             );
         else :
             // Fetch wishlists for guest users based on session
-            $session_id = isset( $_COOKIE['etwc_wishlist_session'] ) ? sanitize_text_field( wp_unslash( $_COOKIE['etwc_wishlist_session'] ) ) : '';
+            $session_id = isset( $_COOKIE['ekwc_wishlist_session'] ) ? sanitize_text_field( wp_unslash( $_COOKIE['ekwc_wishlist_session'] ) ) : '';
 
             if ( ! empty( $session_id ) ) :
                 $wishlists = $wpdb->get_results( 

@@ -11,7 +11,7 @@ defined( 'ABSPATH' ) || exit; ?>
     <input name="<?php echo isset( $field['name'] ) ? esc_attr( $field['name'] ) : ''; ?>" 
            id="<?php echo esc_attr( $field_Key ); ?>" 
            type="text" 
-           class="etwc-colorpicker" 
+           class="ekwc-colorpicker" 
            value="<?php echo esc_attr( $field_Val ); ?>" 
            placeholder="<?php echo isset( $field['placeholder'] ) ? esc_attr( $field['placeholder'] ) : ''; ?>" />
     <p class="description"><?php echo isset( $field['desc'] ) ? wp_kses_post( $field['desc'] ) : ''; ?></p>

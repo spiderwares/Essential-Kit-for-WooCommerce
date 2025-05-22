@@ -60,7 +60,8 @@ if ( ! class_exists( 'EKWC_Admin_Menu' ) ) :
                 'ekwc_compare_premium',
                 'ekwc_shipping_bar_settings',
                 'ekwc_wishlist_setting',
-                'ekwc_quick_view_setting'
+                'ekwc_quick_view_setting',
+                'ekwc_size_chart_setting'
             ];
         
             foreach ( $settings as $setting ) :
@@ -140,6 +141,16 @@ if ( ! class_exists( 'EKWC_Admin_Menu' ) ) :
                 'ekwc-quick-view', 
                 [ $this, 'quick_view_menu_content' ] 
             );
+
+            // Add Quick View submenu
+            add_submenu_page( 
+                'essential_kit', 
+                esc_html__( 'Essential Kit Size Chart', 'essential-kit-for-woocommerce' ), 
+                esc_html__( 'Size Chart', 'essential-kit-for-woocommerce' ), 
+                'manage_options', 
+                'ekwc-size-chart', 
+                [ $this, 'size_chart_menu_content' ] 
+            );
         }
 
         /**
@@ -184,7 +195,18 @@ if ( ! class_exists( 'EKWC_Admin_Menu' ) ) :
 
             // Include the view file for the Quick View settings page
             require_once EKWC_PATH . 'includes/admin/settings/views/quick-view-menu.php';
-        }       
+        }    
+        
+        /**
+         * Display content for the Size Chart settings page.
+         */
+        public function size_chart_menu_content() {
+            // Get the active tab (default to 'general')
+            $active_tab = isset( $_GET['tab'] ) ? sanitize_key( $_GET['tab'] ) : 'general';
+
+            // Include the view file for the Size Chart settings page
+            require_once EKWC_PATH . 'includes/admin/settings/views/size-chart-menu.php';
+        }    
 
         /**
          * Filter data before updating options in the database.

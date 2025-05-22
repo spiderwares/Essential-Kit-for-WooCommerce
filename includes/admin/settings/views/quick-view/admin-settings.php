@@ -67,7 +67,7 @@ if( ! class_exists( 'EKWC_Quick_View_Admin_Settings' ) ):
                 ),
             );
             
-            return apply_filters( 'etwc_quick_view_general_fields', $fields );
+            return apply_filters( 'ekwc_quick_view_general_fields', $fields );
         }
         
         /**
@@ -204,7 +204,7 @@ if( ! class_exists( 'EKWC_Quick_View_Admin_Settings' ) ):
 
             );
             
-            return apply_filters('etwc_quick_view_style_fields', $fields);
+            return apply_filters('ekwc_quick_view_style_fields', $fields);
         }
 
         /**
@@ -265,7 +265,7 @@ if( ! class_exists( 'EKWC_Quick_View_Admin_Settings' ) ):
                     'desc'       => esc_html__( 'Enable to show additional product meta information in the wishlist.', 'essential-kit-for-woocommerce' ),
                 ),
                 'button_section' => array(
-                    'title'      => esc_html__('Content style', 'essential-kit-for-woocommerce'),
+                    'title'      => esc_html__('After Add to Cart Actions', 'essential-kit-for-woocommerce'),
                     'field_type' => 'ekwctitle',
                     'default'    => '',
                 ),
@@ -325,7 +325,7 @@ if( ! class_exists( 'EKWC_Quick_View_Admin_Settings' ) ):
                 ),
             );
         
-            return apply_filters( 'etwc_quick_view_advance_fields', $fields );
+            return apply_filters( 'ekwc_quick_view_advance_fields', $fields );
         }
 
     }

@@ -2,6 +2,7 @@
 /**
  * Free Shipping Annoucement Message
  */
+
 // Prevent direct access to the file.
 defined( 'ABSPATH' ) || exit; ?>
 

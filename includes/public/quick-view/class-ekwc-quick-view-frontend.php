@@ -96,7 +96,9 @@ if ( ! class_exists( 'EKWC_Quick_View_Frontend' ) ) :
          * Enqueue frontend styles and scripts for the Quick View feature.
          */
         public function enqueue_quick_view_assets() {
-            
+                        
+            wp_enqueue_script( 'wc-add-to-cart' );
+
             wp_enqueue_style( 
                 'slick-theme', 
                 EKWC_URL . 'assets/css/quick-view/slick-theme.css', 
@@ -124,7 +126,7 @@ if ( ! class_exists( 'EKWC_Quick_View_Frontend' ) ) :
             wp_enqueue_script( 
                 'ekwc-quick-view-js', 
                 EKWC_URL . 'assets/js/quick-view/ekwc-quick-view.js', 
-                array( 'jquery' ), 
+                array( 'jquery', 'wc-add-to-cart' ), 
                 EKWC_VERSION, 
                 true 
             );

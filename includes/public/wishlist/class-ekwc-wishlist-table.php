@@ -25,7 +25,7 @@ class EKWC_Wishlist_Table {
      * Adds the shortcode for displaying the wishlist table.
      */
     public function __construct() {
-        add_shortcode( 'etwc_wishlist', [ $this, 'render_wishlist_table' ] );
+        add_shortcode( 'ekwc_wishlist', [ $this, 'render_wishlist_table' ] );
     }
 
     /**

@@ -28,6 +28,9 @@ if ( ! class_exists( 'EKWC_Shipping_Bar_Frontend' ) ) :
 			add_action( 'wp_footer', array( $this, 'show_bar_conditional' ), 90 );
 			add_action( 'wp_footer', array( $this, 'show_giftbox' ), 95 );
 			add_filter( 'woocommerce_shipping_free_shipping_is_available', array( $this, 'free_shipping_option' ), 10, 3 );
+
+			add_filter( 'woocommerce_add_to_cart_fragments', array( $this, 'add_shipping_bar_fragment' ) );
+			add_filter( 'woocommerce_add_to_cart_fragments', array( $this, 'gift_box_fragment' ) );
 		}
 		
 		/**
@@ -192,27 +195,29 @@ if ( ! class_exists( 'EKWC_Shipping_Bar_Frontend' ) ) :
 			$closebar_button     = $this->settings->get_option( 'closebar_button', 'no' );
 			$width 				 = ( ! empty( $shipping_option['order_min_amount'] ) && $shipping_option['order_min_amount'] != 0 ) ? ( $shipping_option['total'] / $shipping_option['order_min_amount'] * 100 ) : 0;
 
-			wc_get_template( 
-				'topbar/content-' . $topbar_style . '.php',
-				array(
-					'message'             => $message,
-					'missing_amount'      => $missing_amount,
-					'position'            => $position,
-					'closebar_button'     => $closebar_button,
-					'enable_progress'     => $enable_progress,
-					'bg_color'            => $bg_color,
-					'text_color'          => $text_color,
-					'progress_text_color' => $progress_text_color,
-					'text_align'          => $text_align,
-					'font_size'           => $font_size,
-					'shipping_option'     => $shipping_option,
-					'width'               => $width,
-					'progress_bg_color'   => $progress_bg_color,
-					'curr_prog_color'     => $curr_prog_color,
-				),
-				'woocommerce/', 
-				EKWC_PATH . 'templates/free-shipping-bar/' 
-			);
+			echo '<div id="ekwc-shipping-bar-wrapper">';
+				wc_get_template( 
+					'topbar/content-' . $topbar_style . '.php',
+					array(
+						'message'             => $message,
+						'missing_amount'      => $missing_amount,
+						'position'            => $position,
+						'closebar_button'     => $closebar_button,
+						'enable_progress'     => $enable_progress,
+						'bg_color'            => $bg_color,
+						'text_color'          => $text_color,
+						'progress_text_color' => $progress_text_color,
+						'text_align'          => $text_align,
+						'font_size'           => $font_size,
+						'shipping_option'     => $shipping_option,
+						'width'               => $width,
+						'progress_bg_color'   => $progress_bg_color,
+						'curr_prog_color'     => $curr_prog_color,
+					),
+					'essential-tool-for-woocommerce/', 
+					EKWC_PATH . 'templates/free-shipping-bar/' 
+				);
+			echo '</div>';
 		}
 
 		/**
@@ -317,13 +322,14 @@ if ( ! class_exists( 'EKWC_Shipping_Bar_Frontend' ) ) :
 			
 
 			if ( $show_giftbox === 'yes' && $enable ) :
+				echo '<div id="ekwc-shipping-giftbox-wrapper">';
 				wc_get_template(
 					'giftbox/content-giftbox-icon.php',
 					array(
 						'giftbox_position' 	=> $giftbox_position,
 						'giftbox_icon'		=> $giftbox_icon,
 					),
-					'woocommerce/',
+					'essential-tool-for-woocommerce/',
                 	EKWC_PATH . 'templates/free-shipping-bar/'
 				);
 				wc_get_template(
@@ -340,9 +346,10 @@ if ( ! class_exists( 'EKWC_Shipping_Bar_Frontend' ) ) :
 						'success_msg'		=> $success_msg,
 						'announcement_msg'	=> $announcement_msg
 					),
-					'woocommerce/',
+					'essential-tool-for-woocommerce/',
                 	EKWC_PATH . 'templates/free-shipping-bar/'
 				);
+				echo '</div>';
 			endif;
 			return false;
 		}
@@ -389,6 +396,32 @@ if ( ! class_exists( 'EKWC_Shipping_Bar_Frontend' ) ) :
 			endif;
 		
 			return true;
+		}
+
+		/**
+		 * Adds the shipping bar HTML to WooCommerce cart fragments.
+		 *
+		 * @param array $fragments Existing fragments.
+		 * @return array Modified fragments.
+		 */
+		public function add_shipping_bar_fragment( $fragments ) {
+			ob_start();
+			$this->show_bar(); // Outputs the HTML via get_notification_topbar
+			$fragments['#ekwc-shipping-bar-wrapper'] = ob_get_clean();
+			return $fragments;
+		}
+
+		/**
+		 * Adds the shipping bar HTML to WooCommerce cart fragments.
+		 *
+		 * @param array $fragments Existing fragments.
+		 * @return array Modified fragments.
+		 */
+		public function gift_box_fragment( $fragments ) {
+			ob_start();
+			$this->show_giftbox(); // Outputs the HTML via get_notification_topbar
+			$fragments['#ekwc-shipping-giftbox-wrapper'] = ob_get_clean();
+			return $fragments;
 		}
 
 		

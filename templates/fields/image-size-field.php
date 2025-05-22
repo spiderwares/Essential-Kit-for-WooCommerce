@@ -7,7 +7,7 @@
 defined( 'ABSPATH' ) || exit; ?>
 
 <td>
-    <div class="etwc-size-field">
+    <div class="ekwc-size-field">
         <label for="<?php echo esc_attr( $field_Key ); ?>_width">
             <div><b><?php esc_html_e('Width', 'essential-kit-for-woocommerce'); ?></b></div>
         

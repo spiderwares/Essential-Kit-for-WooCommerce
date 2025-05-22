@@ -60,12 +60,14 @@ if ( ! class_exists( 'EKWC_Ajax_Handler' ) ) :
          */
         public function event_handler() {
             add_action( 'init', array( $this, 'create_wishlist_page' ) );
-            add_action( 'wp_ajax_etwc_add_to_wishlist', array( $this, 'add_to_wishlist' ) );
-            add_action( 'wp_ajax_nopriv_etwc_add_to_wishlist', array( $this, 'add_to_wishlist' ) );
-            add_action( 'wp_ajax_etwc_remove_from_wishlist', array( $this, 'remove_from_wishlist' ) );
-            add_action( 'wp_ajax_nopriv_etwc_remove_from_wishlist', array( $this, 'remove_from_wishlist' ) );        
-            add_action( 'wp_ajax_etwc_delete_wishlist', array( $this, 'delete_wishlist' ) );
-            add_action( 'wp_ajax_nopriv_etwc_delete_wishlist', array( $this, 'delete_wishlist' ) ); 
+            add_action( 'wp_ajax_ekwc_add_to_wishlist', array( $this, 'add_to_wishlist' ) );
+            add_action( 'wp_ajax_nopriv_ekwc_add_to_wishlist', array( $this, 'add_to_wishlist' ) );
+            add_action( 'wp_ajax_ekwc_remove_from_wishlist', array( $this, 'remove_from_wishlist' ) );
+            add_action( 'wp_ajax_nopriv_ekwc_remove_from_wishlist', array( $this, 'remove_from_wishlist' ) );        
+            add_action( 'wp_ajax_ekwc_delete_wishlist', array( $this, 'delete_wishlist' ) );
+            add_action( 'wp_ajax_nopriv_ekwc_delete_wishlist', array( $this, 'delete_wishlist' ) ); 
+            add_action( 'wp_ajax_get_wishlist_page_url', array( $this, 'get_wishlist_page_url_callback' ) );
+            add_action( 'wp_ajax_nopriv_get_wishlist_page_url', array( $this, 'get_wishlist_page_url_callback' ) );        
         }
 
         /**
@@ -102,10 +104,10 @@ if ( ! class_exists( 'EKWC_Ajax_Handler' ) ) :
             endif;
 
             $user_id        = is_user_logged_in() ? get_current_user_id() : null;
-            $session_id     = $user_id ? null : ( isset( $_COOKIE['etwc_wishlist_session'] ) ? sanitize_text_field( wp_unslash( $_COOKIE['etwc_wishlist_session'] ) ) : wp_generate_uuid4() );
+            $session_id     = $user_id ? null : ( isset( $_COOKIE['ekwc_wishlist_session'] ) ? sanitize_text_field( wp_unslash( $_COOKIE['ekwc_wishlist_session'] ) ) : wp_generate_uuid4() );
             
             if (!$user_id) :
-                setcookie( 'etwc_wishlist_session', $session_id, time() + (86400 * 30), '/' );
+                setcookie( 'ekwc_wishlist_session', $session_id, time() + (86400 * 30), '/' );
             endif;
 
             $wishlist_id    = $this->get_wishlist_id( $user_id, $session_id );
@@ -116,12 +118,12 @@ if ( ! class_exists( 'EKWC_Ajax_Handler' ) ) :
                                 : esc_html__( 'My Wishlist', 'essential-kit-for-woocommerce' );
 
                 $wishlist_id = ekwc_save_wishlist( [
-                    'user_id'        => $user_id,
-                    'session_id'     => $session_id,
-                    'wishlist_slug'  => 'default',
-                    'wishlist_name'  => $wishlist_name,
-                    'wishlist_token' => wp_generate_password( 8, false ),
-                    'wishlist_privacy' => 0,
+                    'user_id'           => $user_id,
+                    'session_id'        => $session_id,
+                    'wishlist_slug'     => 'default',
+                    'wishlist_name'     => $wishlist_name,
+                    'wishlist_token'    => wp_generate_password( 8, false ),
+                    'wishlist_privacy'  => 0,
                 ] );
                 
                 if ( ! $wishlist_id ) :
@@ -164,7 +166,13 @@ if ( ! class_exists( 'EKWC_Ajax_Handler' ) ) :
             $product_id       = isset( $_POST['product_id'] ) ? absint( $_POST['product_id'] ) : 0;
             $wishlist_token   = isset( $_POST['wishlist_token'] ) ? sanitize_text_field( wp_unslash( $_POST['wishlist_token'] ) ) : '';
             $wishlist_id      = ekwc_get_wishlist_id_by_token( $wishlist_token );
-        
+
+            if( !isset($_POST['wishlist_token']) ):
+                $user_id    = is_user_logged_in() ? get_current_user_id() : null;
+                $session_id = $user_id ? null : ( isset( $_COOKIE['ekwc_wishlist_session'] ) ? sanitize_text_field( wp_unslash( $_COOKIE['ekwc_wishlist_session'] ) ) : '' );
+                $wishlist_id = $this->get_wishlist_id( $user_id, $session_id );
+            endif;
+
             if ( ! $product_id ) :
                 wp_send_json_error( [ 'message' => esc_html__( 'Invalid product.', 'essential-kit-for-woocommerce' ) ] );
             endif;
@@ -238,7 +246,7 @@ if ( ! class_exists( 'EKWC_Ajax_Handler' ) ) :
             if (!$query->have_posts()) :
                 $page_id = wp_insert_post([
                     'post_title'     => $page_title,
-                    'post_content'   => '[etwc_wishlist]',
+                    'post_content'   => '[ekwc_wishlist]',
                     'post_status'    => 'publish',
                     'post_type'      => 'page',
                     'post_author'    => get_current_user_id(),
@@ -252,6 +260,38 @@ if ( ! class_exists( 'EKWC_Ajax_Handler' ) ) :
                 // Save the existing page ID in options if found
                 $existing_page_id = $query->posts[0];
                 update_option('ekwc_wishlist_page_id', $existing_page_id);
+            endif;
+        }
+
+        /**
+         * Handles the AJAX request to get the wishlist page URL.
+         *
+         * Verifies nonce for security, retrieves the wishlist settings, and 
+         * returns the wishlist page URL or an error message.
+         */
+        public function get_wishlist_page_url_callback() {
+            // Verify nonce for security.
+            if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'ekwc_wishlist_nonce' ) ) :
+                wp_send_json_error( [ 'message' => esc_html__( 'Invalid security token.', 'essential-kit-for-woocommerce' ) ] );
+            endif;
+
+            // Get wishlist settings from options
+            $wishlist_settings = get_option( 'ekwc_wishlist_setting' );
+
+            if ( isset( $wishlist_settings['wishlist_page'] ) ) :
+                // Get the page ID of the wishlist page
+                $wishlist_page_id = $wishlist_settings['wishlist_page'];
+
+                // Get the URL of the wishlist page
+                $wishlist_page_url = get_permalink( $wishlist_page_id );
+
+                if ( $wishlist_page_url ) :
+                    wp_send_json_success( [ 'url' => $wishlist_page_url ] );
+                else :
+                    wp_send_json_error( [ 'message' => 'Wishlist page not found' ] );
+                endif;
+            else :
+                wp_send_json_error( [ 'message' => 'Wishlist page setting not found' ] );
             endif;
         }
         

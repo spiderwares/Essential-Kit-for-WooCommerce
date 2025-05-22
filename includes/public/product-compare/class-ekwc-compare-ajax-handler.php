@@ -32,12 +32,13 @@ if ( ! class_exists( 'EKWC_Compare_Ajax_Handler' ) ) :
          * Handle AJAX request for fetching compare products.
          */
         public function get_compare_products() {   
-
             // Verify nonce for security.
             if ( ! isset( $_POST['ekwc_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['ekwc_nonce'] ) ), 'ekwc_nonce' ) ) :
                 wp_send_json_error( 'Nonce verification failed.' );
                 exit;
             endif;
+
+
             
             // Check if product IDs are provided.
             if ( ! isset( $_POST['product_ids'] ) || ! is_array( $_POST['product_ids'] ) ) :

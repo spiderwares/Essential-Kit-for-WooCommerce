@@ -9,7 +9,7 @@ else: ?>
 <div class="ekwc-flex">
     <h3><?php echo esc_html( $setting['wishlist_table_title']); ?></h3>
 </div>
-<table class="etwc-wishlist-table">
+<table class="ekwc-wishlist-table">
     <thead>
         <tr>    
             <th><?php esc_html_e( 'Wishlists', 'essential-kit-for-woocommerce' ); ?></th>
@@ -25,7 +25,7 @@ else: ?>
     <tbody>
         <?php foreach ( $wishlists as $wishlist ) : ?>
             <?php $wishlist_items = ekwc_get_wishlist_items_with_count( $wishlist['ID'] ); ?>
-            <tr class="etwc-wishlist-row">
+            <tr class="ekwc-wishlist-row">
                 <?php 
                 $wishlist_page_id  = get_option( 'ekwc_wishlist_page_id' );
                 $wishlist_page_url = $wishlist_page_id ? get_permalink( $wishlist_page_id ) : home_url();
@@ -39,15 +39,15 @@ else: ?>
                         <?php echo esc_html( $wishlist['wishlist_name'] ); ?>
                     </a>
                 </td>
-                <td class="etwc-center"><?php $privacy_label = ( $wishlist['wishlist_privacy'] == 0 ) ? esc_html__( 'Public', 'essential-kit-for-woocommerce' ) : esc_html__( 'Private', 'essential-kit-for-woocommerce' ); echo esc_html( $privacy_label ); ?></td>
-                <td class="etwc-center"><?php echo esc_html( $wishlist_items['count'] ); ?></td>
-                <td class="etwc-center"><?php $date = new DateTime($wishlist['dateadded']); 
+                <td class="ekwc-center"><?php $privacy_label = ( $wishlist['wishlist_privacy'] == 0 ) ? esc_html__( 'Public', 'essential-kit-for-woocommerce' ) : esc_html__( 'Private', 'essential-kit-for-woocommerce' ); echo esc_html( $privacy_label ); ?></td>
+                <td class="ekwc-center"><?php echo esc_html( $wishlist_items['count'] ); ?></td>
+                <td class="ekwc-center"><?php $date = new DateTime($wishlist['dateadded']); 
                         echo esc_html($date->format('F j, Y')); ?>
                 </td>
 
                 <?php do_action( 'ekwc_wishlist_table_td_pdf_download', $wishlist ); ?>
 
-                <td class="etwc-center">
+                <td class="ekwc-center">
                     <div href="#" class="ekwc-delete-wishlist" title="<?php esc_html_e( 'Delete Wishlist', 'essential-kit-for-woocommerce' ); ?>" data-wishlist-id="<?php echo esc_attr( $wishlist['ID'] ); ?>">
                         <svg width="26px" height="26px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10 11V17" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

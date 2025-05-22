@@ -21,7 +21,7 @@ if( ! class_exists( 'EKWC_Shipping_Admin_Settings' ) ):
                     'field_type' => 'ekwcswitch',
                     'default'    => 'yes',
                     'name'       => 'ekwc_shipping_bar_settings[enable]',
-                    'desc'       => 'Enable/Disable display progressbar',
+                    'desc'       => 'Enable/Disable display progressbar.',
                     'data_show'  => '.enable',
                 ),
 
@@ -48,7 +48,7 @@ if( ! class_exists( 'EKWC_Shipping_Admin_Settings' ) ):
                 
             );   
             // Apply filter to allow modifications to the general fields.
-            return $fields = apply_filters( 'fsbwc_genral_fields', $fields );
+            return $fields = apply_filters( 'ekwc_genral_shipping_fields', $fields );
         }
 
         /**
@@ -78,7 +78,7 @@ if( ! class_exists( 'EKWC_Shipping_Admin_Settings' ) ):
                         'style1' => esc_html__( 'Style 1', 'essential-kit-for-woocommerce' ),
                         'style2' => esc_html__( 'Style 2', 'essential-kit-for-woocommerce' ),
                     ),
-                    'desc'       => wp_kses_post( 'To override this template copy this file from <code>free-shipping-bar/templates/topbar/conte-style{1-2}.php</code> to your theme folder.', 'essential-kit-for-woocommerce' ),
+                    'desc'       => wp_kses_post( 'To override this template copy this file from <code>essential-tool-for-woocommerce/topbar/conte-style{1-2}.php</code> to your theme folder.', 'essential-kit-for-woocommerce' ),
                 ),
 
                 'show_minicart' => array(

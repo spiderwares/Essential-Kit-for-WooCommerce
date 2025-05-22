@@ -11,13 +11,13 @@ jQuery(function ($) {
         }
 
         eventHandlers() {
-            $(document.body).on("click", "#etwc_add_field", this.addField.bind(this));
-            $(document.body).on("click", ".etwc-remove-field", this.removeField.bind(this));
-            $(document.body).on( 'change', '.etwc-switch-field input[type="checkbox"], select', this.toggleVisibility.bind(this) );
+            $(document.body).on("click", "#ekwc_add_field", this.addField.bind(this));
+            $(document.body).on("click", ".ekwc-remove-field", this.removeField.bind(this));
+            $(document.body).on( 'change', '.ekwc-switch-field input[type="checkbox"], select', this.toggleVisibility.bind(this) );
         }
 
         initColorPicker() {
-            $(".etwc-colorpicker").wpColorPicker({
+            $(".ekwc-colorpicker").wpColorPicker({
                 change: function (event, ui) {
                     $(this).siblings(".colorpickpreview").css("background-color", ui.color.toString());
                 },
@@ -27,11 +27,11 @@ jQuery(function ($) {
         addField(e) {
             e.preventDefault();
 
-            $("#etwc_req_input").append(`
+            $("#ekwc_req_input").append(`
                 <div class="ekwc-input-group" style="margin-bottom: 10px;">
                     <input name="ekwc_compare_table[product_meta][${this.index}][label]" placeholder="Meta Label" type="text" style="margin-right: 10px;">
                     <input name="ekwc_compare_table[product_meta][${this.index}][key]" placeholder="Meta Key" type="text">
-                    <button type="button" class="etwc-remove-field button">Remove</button>
+                    <button type="button" class="ekwc-remove-field button">Remove</button>
                 </div>
             `);
 

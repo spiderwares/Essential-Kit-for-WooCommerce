@@ -6,7 +6,7 @@
 defined( 'ABSPATH' ) || exit; ?>
 
 <td>
-    <div class="etwc-textarea-field">
+    <div class="ekwc-textarea-field">
         <textarea id="<?php echo esc_attr( $field_Key ); ?>" 
                   name="<?php echo isset( $field['name'] ) ? esc_attr( $field['name'] ) : ''; ?>" 
                   placeholder="<?php echo isset( $field['placeholder'] ) ? esc_attr( $field['placeholder'] ) : ''; ?>" 

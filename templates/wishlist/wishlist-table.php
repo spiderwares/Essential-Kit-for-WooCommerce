@@ -10,21 +10,21 @@ if ( empty( $wishlist ) ) :
 endif;
 ?>
 
-<table class="etwc-wishlist-table">
+<table class="ekwc-wishlist-table">
     <thead>
         <tr>
 
-            <?php if( isset( $setting[ 'etwc_left_show_remove' ] ) && $setting[ 'etwc_left_show_remove' ] === 'yes'  ): ?>
+            <?php if( isset( $setting[ 'ekwc_left_show_remove' ] ) && $setting[ 'ekwc_left_show_remove' ] === 'yes'  ): ?>
                 <th></th> <!-- Remove icon -->
             <?php endif; ?>
 
             <th><?php esc_html_e( 'Product', 'essential-kit-for-woocommerce' ); ?></th>
             
-            <?php if( isset( $setting[ 'etwc_price_show' ] ) && $setting[ 'etwc_price_show' ] === 'yes'  ): ?>
+            <?php if( isset( $setting[ 'ekwc_price_show' ] ) && $setting[ 'ekwc_price_show' ] === 'yes'  ): ?>
                 <th><?php esc_html_e( 'Price', 'essential-kit-for-woocommerce' ); ?></th>
             <?php endif; ?>
                 
-            <?php if( isset( $setting[ 'etwc_stock_show' ] ) && $setting[ 'etwc_stock_show' ] === 'yes'  ): ?>
+            <?php if( isset( $setting[ 'ekwc_stock_show' ] ) && $setting[ 'ekwc_stock_show' ] === 'yes'  ): ?>
                 <th><?php esc_html_e( 'Stock', 'essential-kit-for-woocommerce' ); ?></th>
             <?php endif; ?>
 
@@ -32,14 +32,14 @@ endif;
             /**
              * Hook for adding Quick View heading
              */
-            do_action( 'etwc_quick_view_heading' ); 
+            do_action( 'ekwc_quick_view_heading' ); 
             ?>
             
-            <?php if( isset( $setting[ 'etwc_add_to_cart_show' ] ) && $setting[ 'etwc_add_to_cart_show' ] === 'yes'  ): ?>
+            <?php if( isset( $setting[ 'ekwc_add_to_cart_show' ] ) && $setting[ 'ekwc_add_to_cart_show' ] === 'yes'  ): ?>
                 <th><?php esc_html_e( 'Add to Cart', 'essential-kit-for-woocommerce' ); ?></th>
             <?php endif; ?>
 
-            <?php if( isset( $setting[ 'etwc_right_remove_button' ] ) && $setting[ 'etwc_right_remove_button' ] === 'yes'  ): ?>
+            <?php if( isset( $setting[ 'ekwc_right_remove_button' ] ) && $setting[ 'ekwc_right_remove_button' ] === 'yes'  ): ?>
                 <th></th> <!-- Remove button -->
             <?php endif; ?>
 
@@ -59,11 +59,11 @@ endif;
                 // Add to Cart Button
                 $add_to_cart_url = esc_url( wc_get_cart_url() . '?add-to-cart=' . $product_id );
             ?>
-            <tr class="etwc-wishlist-row">
+            <tr class="ekwc-wishlist-row">
                 <!-- Remove Icon (Left) -->
-                <?php if( isset( $setting[ 'etwc_left_show_remove' ] ) && $setting[ 'etwc_left_show_remove' ] === 'yes'  ): ?>
+                <?php if( isset( $setting[ 'ekwc_left_show_remove' ] ) && $setting[ 'ekwc_left_show_remove' ] === 'yes'  ): ?>
                     <td style="text-align: center;">
-                        <span class="etwc-remove-wishlist" data-wishlist-token="<?php echo esc_attr( $wishlist_token ); ?>" data-product-id="<?php echo esc_attr( $product_id ); ?>">×</span>
+                        <span class="ekwc-remove-wishlist" data-wishlist-token="<?php echo esc_attr( $wishlist_token ); ?>" data-product-id="<?php echo esc_attr( $product_id ); ?>">×</span>
                     </td>
                 <?php endif; ?>
 
@@ -75,37 +75,38 @@ endif;
                 </td>
 
                 <!-- Price -->
-                <?php if( isset( $setting[ 'etwc_price_show' ] ) && $setting[ 'etwc_price_show' ] === 'yes'  ): ?>
-                    <td class="etwc-center"><?php echo wp_kses_post( $product_price ); ?></td>
+                <?php if( isset( $setting[ 'ekwc_price_show' ] ) && $setting[ 'ekwc_price_show' ] === 'yes'  ): ?>
+                    <td class="ekwc-center"><?php echo wp_kses_post( $product_price ); ?></td>
                 <?php endif; ?>
 
                 <!-- Stock Status -->
-                <?php if( isset( $setting[ 'etwc_stock_show' ] ) && $setting[ 'etwc_stock_show' ] === 'yes'  ): ?>
-                    <td class="etwc-center"><?php echo esc_html( $stock_status ); ?></td>
+                <?php if( isset( $setting[ 'ekwc_stock_show' ] ) && $setting[ 'ekwc_stock_show' ] === 'yes'  ): ?>
+                    <td class="ekwc-center"><?php echo esc_html( $stock_status ); ?></td>
                 <?php endif; ?>
 
                 <?php /**
                         * Hook for adding Quick View heading
                         */
-                    do_action( 'etwc_quick_view_button', $product_id ); ?>
+                    do_action( 'ekwc_quick_view_button', $product_id ); ?>
 
                 <!-- Add to Cart Button -->
-                <?php if ( isset( $setting['etwc_add_to_cart_show'] ) && $setting['etwc_add_to_cart_show'] === 'yes' ): ?>
-                    <td class="etwc-center ekwc-add_to_cart_td">
+                <?php if ( isset( $setting['ekwc_add_to_cart_show'] ) && $setting['ekwc_add_to_cart_show'] === 'yes' ): ?>
+                    <td class="ekwc-center ekwc-add_to_cart_td">
                         <?php  $product_type = $product->get_type(); ?>
                         <?php if ( $product_type === 'simple' ) : ?>
                             <?php if ( $product->is_in_stock() ) : ?>
                                 <a  data-quantity="1"
                                     data-product_id="<?php echo esc_attr( $product->get_id() ); ?>"
                                     data-product_sku="<?php echo esc_attr( $product->get_sku() ); ?>"
-                                    class="button etwc-add-to-cart ajax_add_to_cart add_to_cart_button">
+                                    class="button ekwc-add-to-cart ajax_add_to_cart add_to_cart_button">
                                     <?php echo esc_html($setting[ 'add_to_cart_text' ] ); ?>
+                                    <img class="ekwc-loader-img" style="display: none;" src="<?php echo esc_url( admin_url( 'images/spinner.gif' ) ); ?>" alt="Loading...">
                                 </a>
                             <?php else : ?>
                                 <span class="out-of-stock-text"><?php esc_html_e( 'Out of Stock', 'essential-kit-for-woocommerce' ); ?></span>
                             <?php endif; ?>
                         <?php else: ?>
-                            <a href="<?php echo esc_url( $product_link ); ?>" class="button etwc-add-to-cart  etwc-select-options">
+                            <a href="<?php echo esc_url( $product_link ); ?>" class="button ekwc-add-to-cart  ekwc-select-options">
                                 <?php esc_html_e( 'Select Options', 'essential-kit-for-woocommerce' ); ?>
                             </a>
                         <?php endif; ?>
@@ -114,9 +115,9 @@ endif;
 
 
                 <!-- Remove Button (Right) -->
-                <?php if( isset( $setting[ 'etwc_right_remove_button' ] ) && $setting[ 'etwc_right_remove_button' ] === 'yes'  ): ?>
+                <?php if( isset( $setting[ 'ekwc_right_remove_button' ] ) && $setting[ 'ekwc_right_remove_button' ] === 'yes'  ): ?>
                     <td style="text-align: center;">
-                        <span class="etwc-remove-wishlist" data-wishlist-token="<?php echo esc_attr( $wishlist_token ); ?>" data-product-id="<?php echo esc_attr( $product_id ); ?>">×</span>
+                        <span class="ekwc-remove-wishlist" data-wishlist-token="<?php echo esc_attr( $wishlist_token ); ?>" data-product-id="<?php echo esc_attr( $product_id ); ?>">×</span>
                     </td>
                 <?php endif; ?>
 
@@ -125,11 +126,11 @@ endif;
     </tbody>
 </table>
 
-<div class="etwc-share">
-    <?php if ( ! empty( $setting['etwc_share_wishlist'] ) && $setting['etwc_share_wishlist'] === 'yes' ) : ?>
-        <h4 class="etwc-share-title"><?php echo esc_html( $setting['wishlist_share_title'] ); ?></h4>
-        <ul class="etwc-share-list">
-            <?php if ( ! empty( $setting['etwc_share_facebook'] ) && $setting['etwc_share_facebook'] === 'yes' ) : ?>
+<div class="ekwc-share">
+    <?php if ( ! empty( $setting['ekwc_share_wishlist'] ) && $setting['ekwc_share_wishlist'] === 'yes' ) : ?>
+        <h4 class="ekwc-share-title"><?php echo esc_html( $setting['wishlist_share_title'] ); ?></h4>
+        <ul class="ekwc-share-list">
+            <?php if ( ! empty( $setting['ekwc_share_facebook'] ) && $setting['ekwc_share_facebook'] === 'yes' ) : ?>
                 <li class="share-button">
                     <a target="_blank" rel="noopener" class="facebook" href="https://www.facebook.com/sharer.php?u=<?php echo esc_attr( $current_url ); ?>" title="Facebook">
                         <img src="<?php echo esc_url( $setting['facebook_icon'] ); ?>" alt="Facebook">
@@ -137,7 +138,7 @@ endif;
                 </li>
             <?php endif; ?>
 
-            <?php if ( ! empty( $setting['etwc_share_twitter'] ) && $setting['etwc_share_twitter'] === 'yes' ) : ?>
+            <?php if ( ! empty( $setting['ekwc_share_twitter'] ) && $setting['ekwc_share_twitter'] === 'yes' ) : ?>
                 <li class="share-button">
                     <a target="_blank" rel="noopener" class="twitter" href="https://twitter.com/share?url=<?php echo esc_attr( $current_url ); ?>" title="Twitter (X)">
                         <img src="<?php echo esc_url( $setting['twitter_icon'] ); ?>" alt="Twitter">
@@ -145,7 +146,7 @@ endif;
                 </li>
             <?php endif; ?>
 
-            <?php if ( ! empty( $setting['etwc_share_pinterest'] ) && $setting['etwc_share_pinterest'] === 'yes' ) : ?>
+            <?php if ( ! empty( $setting['ekwc_share_pinterest'] ) && $setting['ekwc_share_pinterest'] === 'yes' ) : ?>
                 <li class="share-button">
                     <a target="_blank" rel="noopener" class="pinterest" href="http://pinterest.com/pin/create/button/?url=<?php echo esc_attr( $current_url ); ?>" title="Pinterest" onclick="window.open(this.href); return false;">
                         <img src="<?php echo esc_url( $setting['pinterest_icon'] ); ?>" alt="Pinterest">
@@ -153,7 +154,7 @@ endif;
                 </li>
             <?php endif; ?>
 
-            <?php if ( ! empty( $setting['etwc_share_email'] ) && $setting['etwc_share_email'] === 'yes' ) : ?>
+            <?php if ( ! empty( $setting['ekwc_share_email'] ) && $setting['ekwc_share_email'] === 'yes' ) : ?>
                 <li class="share-button">
                     <a class="email" href="mailto:?subject=Checkout with this&amp;body=<?php echo esc_attr( $current_url ); ?>" title="Email">
                         <img src="<?php echo esc_url( $setting['email_icon'] ); ?>" alt="Email">
@@ -161,7 +162,7 @@ endif;
                 </li>
             <?php endif; ?>
 
-            <?php if ( ! empty( $setting['etwc_share_whatsapp'] ) && $setting['etwc_share_whatsapp'] === 'yes' ) : ?>
+            <?php if ( ! empty( $setting['ekwc_share_whatsapp'] ) && $setting['ekwc_share_whatsapp'] === 'yes' ) : ?>
                 <li class="share-button">
                     <a class="whatsapp" href="https://wa.me/?text=<?php echo esc_attr( 'Checkout with this: ' . $current_url ); ?>" data-action="share/whatsapp/share" target="_blank" rel="noopener" title="WhatsApp">
                         <img src="<?php echo esc_url( $setting['whatsapp_icon'] ); ?>" alt="WhatsApp">

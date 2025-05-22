@@ -34,9 +34,7 @@ if ( ! class_exists( 'EKWC' ) ) :
         private function event_handler() {
             // Register plugin activation hook
             register_activation_hook( EKWC_FILE, array( __CLASS__, 'install' ) );
-
-            // Hook to install the plugin after plugins are loaded
-            add_action( 'plugins_loaded', array( $this, 'etwc_install' ), 11 );
+            add_action( 'plugins_loaded', array( $this, 'ekwc_install' ), 11 );
             add_action( 'plugins_loaded', array( $this, 'includes' ), 11 );
         }
 
@@ -51,7 +49,7 @@ if ( ! class_exists( 'EKWC' ) ) :
         public static function instance() {
             if ( is_null( self::$instance ) ) :
                 self::$instance = new self();
-                do_action( 'etwc_plugin_loaded' );
+                do_action( 'ekwc_plugin_loaded' );
             endif;
             return self::$instance;
         }
@@ -70,7 +68,7 @@ if ( ! class_exists( 'EKWC' ) ) :
         /**
          * Function to initialize the plugin after WooCommerce is loaded.
          */
-        public function etwc_install() {
+        public function ekwc_install() {
             if ( ! function_exists( 'WC' ) ) :
                 add_action( 'admin_notices', array( $this, 'woocommerce_admin_notice' ) );
             else :
@@ -89,6 +87,7 @@ if ( ! class_exists( 'EKWC' ) ) :
             require_once EKWC_PATH . 'includes/ekwc-functions.php';
             require_once EKWC_PATH . 'includes/public/quick-view/class-ekwc-quick-view-ajax-handler.php';
             require_once EKWC_PATH . 'includes/public/free-shipping-bar/class-ekwc-shipping-bar-frontend.php';
+            require_once EKWC_PATH . 'includes/public/size-chart/class-ekwc-size-chart-ajax-handler.php';
             if( is_admin() ) :
                 $this->includes_admin();
             else :
@@ -104,6 +103,7 @@ if ( ! class_exists( 'EKWC' ) ) :
             require_once EKWC_PATH . 'includes/admin/dashboard/views/class-ekwc-general-setting.php';
             require_once EKWC_PATH . 'includes/admin/dashboard/class-essential_kit-dashboard.php';
             require_once EKWC_PATH . 'includes/admin/settings/class-ekwc-admin-menu.php';
+            require_once EKWC_PATH . 'includes/admin/settings/class-ekwc-size-chart-post-type.php';
         }
 
         /**
@@ -115,6 +115,8 @@ if ( ! class_exists( 'EKWC' ) ) :
             require_once EKWC_PATH . 'includes/public/wishlist/class-ekwc-wishlist-table.php';
             require_once EKWC_PATH . 'includes/public/quick-view/class-ekwc-quick-view-frontend.php';
             require_once EKWC_PATH . 'includes/public/class-ekwc-general.php';
+            require_once EKWC_PATH . 'includes/public/size-chart/class-ekwc-size-chart-frontend.php';
+            require_once EKWC_PATH . 'includes/public/size-chart/class-ekwc-size-chart-shortcode.php';
         }
 
         /**
@@ -172,15 +174,13 @@ if ( ! class_exists( 'EKWC' ) ) :
          * Execute function on plugin activation
          */
         public static function default_data() {
-
             $defaultOptions = require_once EKWC_PATH . '/includes/static/ekwc-default-options.php';
             foreach ( $defaultOptions as $optionKey => $option ) :
                 $existingOption = get_option( $optionKey );
                 if ( ! $existingOption ) :
                     update_option( $optionKey, $option );
                 endif;
-            endforeach;
-            
+            endforeach;    
         }
 
     }

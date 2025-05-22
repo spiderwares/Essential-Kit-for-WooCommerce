@@ -60,7 +60,7 @@ if( ! class_exists( 'EKWC_General_Setting' ) ):
                         'disable-0'                                     => esc_html__('Disable Button/Icon', 'essential-kit-for-woocommerce' ), 
                         'woocommerce_product_thumbnails-0'              => esc_html__( 'Over The Image', 'essential-kit-for-woocommerce' ),
                         'woocommerce_before_single_product_summary-0'   => esc_html__( 'Top of Product Page', 'essential-kit-for-woocommerce' ), 
-                        'woocommerce_single_product_summary-0'          => esc_html__( 'Before Product Title', 'essential-kit-for-woocommerce' ), 
+                        'woocommerce_single_product_summary-4'          => esc_html__( 'Before Product Title', 'essential-kit-for-woocommerce' ), 
                         'woocommerce_single_product_summary-6'          => esc_html__( 'After Product Title', 'essential-kit-for-woocommerce' ), 
                         'woocommerce_before_add_to_cart_form-10'        => esc_html__( 'After Short Description', 'essential-kit-for-woocommerce' ), 
                         'woocommerce_before_add_to_cart_quantity-10'    => esc_html__( 'Before Quantity Input Field', 'essential-kit-for-woocommerce' ), 
@@ -116,7 +116,7 @@ if( ! class_exists( 'EKWC_General_Setting' ) ):
                     'options'    => array(
                         'disable-0'                                 => esc_html__( 'Disable Button/Icon', 'essential-kit-for-woocommerce' ),
                         'woocommerce_before_shop_loop_item-10'      => esc_html__( 'Over The Image', 'essential-kit-for-woocommerce' ),
-                        'woocommerce_shop_loop_item_title-10'       => esc_html__( 'After Featured Image/Before Title', 'essential-kit-for-woocommerce' ),
+                        'woocommerce_before_shop_loop_item_title-0' => esc_html__( 'After Featured Image/Before Title', 'essential-kit-for-woocommerce' ),
                         'woocommerce_after_shop_loop_item_title-0'  => esc_html__( 'After Title', 'essential-kit-for-woocommerce' ),
                         'woocommerce_after_shop_loop_item-1'        => esc_html__( 'Before Add to Cart', 'essential-kit-for-woocommerce' ),
                         'woocommerce_after_shop_loop_item-20'       => esc_html__( 'After Add to Cart', 'essential-kit-for-woocommerce' ),
@@ -200,7 +200,7 @@ if( ! class_exists( 'EKWC_General_Setting' ) ):
                 'wishlist_img' => array(
                     'title'      => esc_html__( 'Wishlist Icon', 'essential-kit-for-woocommerce' ),
                     'field_type' => 'ekwctext',
-                    'default'    => EKWC_URL . 'assets/img/wishlist.svg',
+                    'default'    => EKWC_URL . 'assets/img/wishlist/heart-outline.svg',
                     'name'       => 'ekwc_general_setting[wishlist_img]',
                     'desc'       => esc_html__( 'Customize the icon for the Wishlist icon on the product image.', 'essential-kit-for-woocommerce' ),
                 ),

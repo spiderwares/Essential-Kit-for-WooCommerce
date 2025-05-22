@@ -6,7 +6,7 @@
 // Prevent direct access to the file.
 defined( 'ABSPATH' ) || exit; ?>
 <td>
-    <div class="etwc-pro-field">
+    <div class="ekwc-pro-field">
     <p class="description" style="color: #c9356e">
             <?php esc_html_e( 'This feature is only available in the Premium Version.', 'essential-kit-for-woocommerce' ); ?>
             <?php 

@@ -19,14 +19,12 @@
             </a>
 
             <!-- Premium version tab, visible only if not in the premium version -->
-            <?php if ( ! defined( 'EKWC_PREMIUM' ) ) : ?>
-                <a href="<?php echo esc_url( admin_url( 'admin.php?page=ekwc-quick-view&tab=premium' ) ); ?>" 
-                   class="<?php echo esc_attr( $active_tab === 'premium' ? 'nav-tab nav-tab-active' : 'nav-tab' ); ?>" 
-                   style="color: #c9356e;">
-                    <img src="<?php echo esc_url( EKWC_URL . 'assets/img/setting.svg'); ?>" />
-                    <?php esc_html_e( 'Premium Features', 'essential-kit-for-woocommerce' ); ?>
-                </a>
-            <?php endif; ?>
+            <a href="<?php echo esc_url( admin_url( 'admin.php?page=ekwc-quick-view&tab=premium' ) ); ?>" 
+                class="<?php echo esc_attr( $active_tab === 'premium' ? 'nav-tab nav-tab-active' : 'nav-tab' ); ?>" 
+                style="color: #c9356e;">
+                <img src="<?php echo esc_url( EKWC_URL . 'assets/img/premium.svg'); ?>" />
+                <?php esc_html_e( 'Premium Features', 'essential-kit-for-woocommerce' ); ?>
+            </a>
         </h2>
     </div>
 

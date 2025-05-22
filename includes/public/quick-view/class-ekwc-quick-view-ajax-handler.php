@@ -36,7 +36,6 @@ if ( ! class_exists( 'EKWC_Quick_View_Ajax_Handler' ) ) :
          * AJAX handler for loading Quick View content.
          */
         public function quick_view_model() {
-
             // verify nonce
             if ( ! isset( $_POST['ekwc_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['ekwc_nonce'] ) ), 'ekwc_nonce' ) ) :
                 wp_send_json_error( 'Nonce verification failed.' );

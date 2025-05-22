@@ -123,7 +123,7 @@ if ( ! class_exists( 'EKWC_Genral' ) ) :
             // Check if this is the main single product (not a related product)
             $is_main_product        = is_product() && isset( $wp_query->queried_object_id ) && $wp_query->queried_object_id === $product->get_id();
             $is_in_loop             = wc_get_loop_prop('name') ? true : false;
-            $icon_position_loop     = isset( $this->general_settings['icon_position_loop'] ) ? $this->general_settings['icon_position_loop'] : 'top-right';
+            $icon_position_shop     = isset( $this->general_settings['icon_position_shop'] ) ? $this->general_settings['icon_position_shop'] : 'top-right';
             $icon_position_single   = isset( $this->general_settings['icon_position_single'] ) ? $this->general_settings['icon_position_single'] : 'top-right';
             $shop_viewport          = isset( $this->general_settings['icon_viewport_shop'] ) ? $this->general_settings['icon_viewport_shop'] : 'top-right';
             $single_viewport        = isset( $this->general_settings['icon_viewport_single'] ) ? $this->general_settings['icon_viewport_single'] : 'top-right';
@@ -135,13 +135,15 @@ if ( ! class_exists( 'EKWC_Genral' ) ) :
                 $icon_position   = $icon_position_single .' '. $single_viewport;
             else :
                 $container_class = 'ekwc-loop-product-icons';  // Related products / Loop
-                $icon_position   = $icon_position_loop .' '. $shop_viewport .' '. $display_type;
+                $icon_position   = $icon_position_shop .' '. $shop_viewport .' '. $display_type;
             endif;
         
             // Get the product ID
             $product_id = $product->get_id();
-        
+
             echo '<div class="ekwc-product-icons-container ' . esc_attr( $container_class . ' ' . $icon_position ) . '">';
+
+                do_action( 'ekwc_before_product_icons', $product_id );
             
                 // Display Compare icon if enabled.
                 if ( isset( $this->general_settings['enable_compare'] ) && 'yes' === $this->general_settings['enable_compare'] ) :
@@ -150,16 +152,19 @@ if ( ! class_exists( 'EKWC_Genral' ) ) :
                 
                 // Display Quick View icon only in loops !$is_main_product && 
                 if ( isset( $this->general_settings['enable_quick_view'] ) && 'yes' === $this->general_settings['enable_quick_view'] ) :
-                    echo '<div class="ekwc-quick-view-icon ekwc-quick-view" data-product_id="' . esc_attr( $product_id ) . '">' . wp_kses_post($this->get_quick_view_icon()) . '</div>';
+                    echo '<div class="ekwc-quick-view-icon ekwc-quick-view" data-product_id="' . esc_attr( $product_id ) . '">' . wp_kses_post($this->get_quick_view_icon()) . '<img class="ekwc-loader" style="display: none;" src="' . esc_url( admin_url( 'images/spinner.gif' ) ) . '" alt="Loading..."></div>';
                 endif;
 
                 // Display Wishlist icon if enabled.
                 if ( isset( $this->general_settings['enable_wishlist'] ) && 'yes' === $this->general_settings['enable_wishlist'] ) :
                     $this->get_wishlist_icon();
                 endif;
+
+                do_action( 'ekwc_after_product_icons', $product_id );
         
             echo '</div>';
         }
+
 
         /**
          * Get the compare icon SVG or custom image.
@@ -215,21 +220,57 @@ if ( ! class_exists( 'EKWC_Genral' ) ) :
             $wishlist_ids   = ekwc_get_wishlist_product_ids();
             $is_in_wishlist = in_array( $product_id, $wishlist_ids );
             $wishlist_icon  = $is_in_wishlist ? $added_icon : $wishlist_icon; 
-            if( isset( $this->wishlist_setting['multi_wishlist_feature'] ) && $this->wishlist_setting['multi_wishlist_feature'] === 'yes' ):
-                $action_class   = $is_in_wishlist ? 'etwc-remove-wishlist' : 'etwc_multiselect_wishlist'; 
+            $loader_img     = esc_url( admin_url( 'images/spinner.gif' ) );
+            $after_action   = isset( $this->wishlist_setting['after_add_to_wishlist_action'] ) ? $this->wishlist_setting['after_add_to_wishlist_action'] : 'added_to_wishlist_btn';
+            
+            if( isset( $this->wishlist_setting['multi_wishlist_feature'] ) && $this->wishlist_setting['multi_wishlist_feature'] === 'yes' && class_exists( 'EKWC_PRO' ) ):
+                if( $is_in_wishlist ):
+                    switch ( $after_action ) {
+                        case 'view_wishlist_link':
+                            $action_class = 'view_wishlist';
+                            break;
+                        case 'remove_from_list':
+                            $action_class = 'ekwc-remove-wishlist';
+                            break;
+                        case 'added_to_wishlist_btn':
+                        default:
+                            $action_class = 'ekwc_multiselect_wishlist';
+                            break;
+                    }
+                else:
+                    $action_class = 'ekwc_multiselect_wishlist';
+                endif;
             else:
-                $action_class   = $is_in_wishlist ? 'etwc-remove-wishlist' : 'etwc-wishlist-button'; 
+                if( $is_in_wishlist ):
+                    switch ( $after_action ) {
+                        case 'view_wishlist_link':
+                            $action_class = 'view_wishlist';
+                            break;
+                        case 'remove_from_list':
+                            $action_class = 'ekwc-remove-wishlist';
+                            break;
+                        case 'added_to_wishlist_btn':
+                        default:
+                            $action_class = 'ekwc-wishlist-button';
+                            break;
+                    }
+                else:
+                    $action_class = 'ekwc-wishlist-button';
+                endif;
+
             endif;
         
             // Display Wishlist Icon
             printf(                
                 '<div class="ekwc-wishlist-icon %1$s" data-product-id="%2$s">
-                    <img class="etwc-loop-img" src="%3$s" alt="%4$s">
+                    <img class="ekwc-loop-img" src="%3$s" alt="%4$s">
+                    <img class="ekwc-loader" style="display: none;" src="%5$s" alt="Loading...">
                 </div>',
                 esc_attr( $action_class ),
                 esc_attr( $product_id ),
                 esc_url( $wishlist_icon ),
-                esc_attr__( 'Wishlist', 'essential-kit-for-woocommerce' )
+                esc_attr__( 'Wishlist', 'essential-kit-for-woocommerce' ),
+                esc_attr( $loader_img ),
             );
         }
 
@@ -241,17 +282,16 @@ if ( ! class_exists( 'EKWC_Genral' ) ) :
             $compare_products   = isset( $_COOKIE['wcpc_compare_products'] ) ? json_decode( sanitize_text_field( wp_unslash( $_COOKIE['wcpc_compare_products'] ) ), true ) : []; 
             $compare_text       = in_array( $product_id, $compare_products ) ? esc_html__( 'Added to compare', 'essential-kit-for-woocommerce' ) : $compare_text;
             $loader_img         = esc_url( admin_url( 'images/spinner.gif' ) );
-            $button_class       = 'ekwc-compare-button ' . esc_attr( $this->theme_button_class );
+            $button_class       = 'ekwc-compare-button wp-element-button ' . esc_attr( $this->theme_button_class );
         
             $html = sprintf(
                 '<div class="ekwc-compare-button-wrapper">
                     <button type="button" class="%s" data-product_id="%d">%s</button>
-                    <img class="ekwc-loader" style="display: none;" src="%s" alt="Loading...">
                 </div>',
-                esc_attr($button_class),
-                esc_attr($product_id),
-                esc_html($compare_text),
-                $loader_img
+                esc_attr( $button_class ),
+                esc_attr( $product_id ),
+                esc_html( $compare_text ),
+                esc_attr( $loader_img )
             );
 
             echo wp_kses_post( $html );
@@ -260,7 +300,7 @@ if ( ! class_exists( 'EKWC_Genral' ) ) :
         /**
          * Renders the wishlist button for a product.
          */
-        public function set_wishlist_button( $product_id ) {
+        public function wishlist_button( $product_id ) {
             $wishlist_setting   = $this->wishlist_setting;
             $wishlist_ids       = ekwc_get_wishlist_product_ids();
             $wishlist_page_id   = get_option( 'ekwc_wishlist_page_id' );
@@ -307,7 +347,7 @@ if ( ! class_exists( 'EKWC_Genral' ) ) :
                 : esc_html__( 'Quick View', 'essential-kit-for-woocommerce' );
 
             $html = sprintf(
-                '<button class="ekwc-quick-view" data-product_id="%d">%s <span class="etwc-loader"></span></button>',
+                '<button class="wp-element-button ekwc-quick-view" data-product_id="%d">%s <span class="ekwc-loader"></span></button>',
                 esc_attr( $product_id ),
                 esc_html( $button_label )
             );
@@ -323,6 +363,8 @@ if ( ! class_exists( 'EKWC_Genral' ) ) :
 
             $product_id = $product->get_id();
 
+            do_action( 'ekwc_before_buttons', $product_id );
+
             // Display Compare button if the Compare feature is enabled.
             if ( isset( $this->general_settings['enable_compare'] ) && 'yes' === $this->general_settings['enable_compare'] ) :
                 $this->compare_button( $product_id );
@@ -335,8 +377,10 @@ if ( ! class_exists( 'EKWC_Genral' ) ) :
 
             // Display Wishlist button if the Wishlist feature is enabled.
             if ( isset( $this->general_settings['enable_wishlist'] ) && 'yes' === $this->general_settings['enable_wishlist'] ) :
-                $this->set_wishlist_button( $product_id );
+                $this->wishlist_button( $product_id );
             endif;
+
+            do_action( 'ekwc_after_essential_kit_buttons', $product_id );
         }
 
 

@@ -69,7 +69,7 @@ if ( ! class_exists( 'Essential_Kit_Dashboard' ) ) {
 				'manage_options',
 				'essential_kit',
 				[ $this, 'dashboard_callback' ], 
-				EKWC_URL . '/assets/img/ekwc.svg', 
+				'data:image/svg+xml;base64,' . base64_encode( file_get_contents( EKWC_PATH . '/assets/img/ekwc.svg' ) ),
 				26
 			);
 

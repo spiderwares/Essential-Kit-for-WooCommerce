@@ -25,14 +25,14 @@ jQuery(function ($) {
 
             $.ajax({
                 type: 'POST',
-                url: ekwc_vars.ajax_url, // Ensure `ekwc_vars` is localized in PHP
+                url: ekwc_wishlist_vars.ajax_url, // Ensure `ekwc_wishlist_vars` is localized in PHP
                 data: {
                     action: 'ekwc_load_quick_view',
                     product_id: productId,
                     ekwc_nonce: ekwc_vars.ekwc_nonce, 
                 },
                 beforeSend: () => {
-                    __this.addClass('loading');
+                    __this.addClass('ekwc-loading');
                 },
                 success: (response) => {
                     if (response.success) {
@@ -50,7 +50,7 @@ jQuery(function ($) {
                     console.log('Error loading Quick View.');
                 },
                 complete: () => {
-                    __this.removeClass('loading');
+                    __this.removeClass('ekwc-loading');
                 }
             });
         }
@@ -63,30 +63,30 @@ jQuery(function ($) {
             e.preventDefault();
 
             var __this      =  $(e.currentTarget),
-                productId   = __this.data("product_id");
+                productId   = __this.data('product_id');
     
             if (!productId) return;
     
             $.ajax({
-                type: "POST",
+                type: 'POST',
                 url: wc_add_to_cart_params.wc_ajax_url.toString().replace("%%endpoint%%", "add_to_cart"),
                 data: { product_id: productId, quantity: 1 },
                 beforeSend: () => {
-                    __this.addClass("loading");
+                    __this.addClass('ekwc-loading');
                 },
                 success: (response) => {
-                    if ( etwc_vars.quick_view_setting.close_popup_after_add_to_cart == "yes" ) {
+                    if ( ekwc_wishlist_vars.quick_view_setting.close_popup_after_add_to_cart == 'yes' ) {
                         this.closeQuickView();
                     }
-                    if ( etwc_vars.quick_view_setting.redirect_to_checkout_after_add_to_cart == "yes" ) {
-                        window.location.href = etwc_vars.checkout_url; 
+                    if ( ekwc_wishlist_vars.quick_view_setting.redirect_to_checkout_after_add_to_cart == 'yes' ) {
+                        window.location.href = ekwc_wishlist_vars.checkout_url; 
                     }
                 },
                 error: (xhr, status, error) => {
-                    console.log("Error adding to cart.");
+                    console.log('Error adding to cart.');
                 },
                 complete: () => {
-                    __this.removeClass("loading").addClass("added");
+                    __this.removeClass('ekwc-loading');
                 }
             });
         }

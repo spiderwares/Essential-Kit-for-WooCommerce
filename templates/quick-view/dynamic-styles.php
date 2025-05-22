@@ -117,27 +117,27 @@ endif; ?>
     color: <?php echo esc_attr( $main_text_color ); ?>;
 }
 
-.etwc-wishlist-table .etwc-add-to-cart{
+.ekwc-wishlist-table .ekwc-add-to-cart{
     background-color: <?php echo esc_attr( $wl_addtocart_bg ); ?>;
     color: <?php echo esc_attr( $wl_addtocart_text ); ?>;
 }
 .ekwc-wishlist-modal .ekwc-wishlist-add:hover, 
 button.ekwc-wishlist-create:hover,
-.etwc-wishlist-table .etwc-add-to-cart:hover{
+.ekwc-wishlist-table .ekwc-add-to-cart:hover{
     background-color: <?php echo esc_attr( $wl_addtocart_bg_hover ); ?>;
     color: <?php echo esc_attr( $wl_addtocart_text_hover ); ?>;
 }
 
 .ekwc-wishlist-modal .ekwc-wishlist-add:hover, 
 button.ekwc-wishlist-create:hover,
-button.etwc_multiselect_wishlist,
-button.etwc-wishlist-button{
+button.ekwc_multiselect_wishlist,
+button.ekwc-wishlist-button{
     background-color: <?php echo esc_attr( $wl_btn_bg ); ?>;
     color: <?php echo esc_attr( $wl_btn_text ); ?>;
 }
 
-button.etwc_multiselect_wishlist:hover,
-button.etwc-wishlist-button:hover{
+button.ekwc_multiselect_wishlist:hover,
+button.ekwc-wishlist-button:hover{
     background-color: <?php echo esc_attr( $wl_btn_bg_hover ); ?>;
     color: <?php echo esc_attr( $wl_btn_text_hover ); ?>;
 }
@@ -167,7 +167,7 @@ button.etwc-wishlist-button:hover{
     border: 1px solid <?php echo esc_attr($icon_hover_color); ?>;
 }
 
-.etwc-wishlist-table thead th{
+.ekwc-wishlist-table thead th{
     background: <?php echo esc_attr($wl_btn_bg); ?>;
     color: <?php echo esc_attr($wl_btn_text); ?>;
 }

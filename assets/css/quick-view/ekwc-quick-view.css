@@ -175,3 +175,26 @@
 .ekwc-model.sliding_panel .ekwc-quick-view-image{
     padding: 0;
 }
+
+.ekwc-quick-view-icon.ekwc-quick-view.ekwc-loading svg,
+.ekwc-quick-view-icon.ekwc-quick-view.ekwc-loading img,
+.ekwc-wishlist-icon.ekwc-wishlist-button.ekwc-loading svg,
+.ekwc-wishlist-icon.ekwc-wishlist-button.ekwc-loading img,
+.ekwc-wishlist-icon.ekwc-remove-wishlist.ekwc-loading img,
+.ekwc-wishlist-icon.ekwc-remove-wishlist.ekwc-loading svg,
+.ekwc-wishlist-icon.view_wishlist.ekwc-loading svg,
+.ekwc-wishlist-icon.view_wishlist.ekwc-loading img{
+    display: none !important;
+}
+
+.ekwc-wishlist-icon.ekwc-remove-wishlist.ekwc-loading .ekwc-loader,
+.ekwc-quick-view-icon.ekwc-quick-view.ekwc-loading .ekwc-loader,
+.ekwc-wishlist-icon.ekwc-wishlist-button.ekwc-loading .ekwc-loader,
+.ekwc-wishlist-icon.view_wishlist.ekwc-loading .ekwc-loader{
+    display: block !important;
+}
+
+.button.ekwc-add-to-cart.add_to_cart_button.ekwc-loading .ekwc-loader-img,
+.ekwc-quick-view-body button.ekwc_add_to_cart.ekwc-loading .ekwc-loader-img{
+    display: inline-block !important;
+}

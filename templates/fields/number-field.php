@@ -7,7 +7,7 @@
 defined( 'ABSPATH' ) || exit; ?>
 
 <td>
-    <div class="etwc-number-field">
+    <div class="ekwc-number-field">
         <input type="number" 
                id="<?php echo esc_attr( $field_Key ); ?>" 
                name="<?php echo isset( $field['name'] ) ? esc_attr( $field['name'] ) : ''; ?>" 

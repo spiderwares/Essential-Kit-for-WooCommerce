@@ -50,8 +50,8 @@ if ( ! class_exists( 'EKWC_Wishlist_Frontend' ) ) :
         public function enqueue_frontend_styles() {
             // Enqueue wishlist JavaScript file.
             wp_enqueue_script( 
-                'etwc-wishlist-js', 
-                EKWC_URL . 'assets/js/wishlist/etwc-wishlist-frontend.js', 
+                'ekwc-wishlist-js', 
+                EKWC_URL . 'assets/js/wishlist/ekwc-wishlist-frontend.js', 
                 array( 'jquery' ), 
                 EKWC_VERSION, 
                 true 
@@ -59,14 +59,14 @@ if ( ! class_exists( 'EKWC_Wishlist_Frontend' ) ) :
 
             // Enqueue wishlist CSS file.
             wp_enqueue_style( 
-                'etwc-wishlist-style', 
-                EKWC_URL . 'assets/css/wishlist/etwc-wishlist-style.css', 
+                'ekwc-wishlist-style', 
+                EKWC_URL . 'assets/css/wishlist/ekwc-wishlist-style.css', 
                 array(), 
                 EKWC_VERSION 
             );
 
             // Localize script with dynamic variables.
-            wp_localize_script( 'etwc-wishlist-js', 'etwc_vars', array(
+            wp_localize_script( 'ekwc-wishlist-js', 'ekwc_wishlist_vars', array(
                 'ajax_url'              => admin_url( 'admin-ajax.php' ),
                 'wishlist_nonce'        => wp_create_nonce( 'ekwc_wishlist_nonce' ),
                 'is_user_logged_in'     => is_user_logged_in() ? 1 : 0,

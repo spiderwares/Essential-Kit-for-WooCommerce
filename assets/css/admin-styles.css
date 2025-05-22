@@ -66,9 +66,9 @@
     gap: 10px;
 }
 
-.etwc-select-field select,
-.etwc-number-field input[type="number"],
-.etwc-text-field input[type="text"] {
+.ekwc-select-field select,
+.ekwc-number-field input[type="number"],
+.ekwc-text-field input[type="text"] {
     min-width: 350px;
     padding: 3px 10px;
     border-radius: 2px;
@@ -79,16 +79,16 @@
 }
 
 /*--------------------------- Start Switch Field ------------------------------*/
-.etwc-switch-field {
+.ekwc-switch-field {
     display: flex;
     align-items: center;
 }
 
-.etwc-switch-field input {
+.ekwc-switch-field input {
     display: none;
 }
 
-.etwc-switch-field label {
+.ekwc-switch-field label {
     position: relative;
     display: inline-block;
     width: 44px;
@@ -99,11 +99,11 @@
     transition: background-color 0.3s ease;
 }
 
-.etwc-switch-field input:checked + label {
+.ekwc-switch-field input:checked + label {
     background-color: #7f54b3;
 }
 
-.etwc-switch-field label::before {
+.ekwc-switch-field label::before {
     content: "";
     position: absolute;
     top: 1px;
@@ -116,11 +116,11 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.etwc-switch-field input:checked + label::before {
+.ekwc-switch-field input:checked + label::before {
     transform: translateX(20px);
 }
 
-.etwc-switch-field .etwc-switch-icon {
+.ekwc-switch-field .ekwc-switch-icon {
     position: relative;
     top: 50%;
     left: 72%;
@@ -132,48 +132,48 @@
     height: 100%;
 }
 
-.etwc-switch-field .etwc-icon-on,
-.etwc-switch-field .etwc-icon-off {
+.ekwc-switch-field .ekwc-icon-on,
+.ekwc-switch-field .ekwc-icon-off {
     width: 14px;
     height: 15px;
 }
 
-.etwc-switch-field input:checked + label .etwc-icon-on {
+.ekwc-switch-field input:checked + label .ekwc-icon-on {
     display: block;
 }
 
-.etwc-switch-field input:not(:checked) + label .etwc-icon-off {
+.ekwc-switch-field input:not(:checked) + label .ekwc-icon-off {
     display: block;
 }
 
-.etwc-switch-field input:not(:checked) + label .etwc-icon-on {
+.ekwc-switch-field input:not(:checked) + label .ekwc-icon-on {
     display: none;
 }
 
-.etwc-switch-field input:checked + label .etwc-icon-off {
+.ekwc-switch-field input:checked + label .ekwc-icon-off {
     display: none;
 }
 
 
-.etwc-switch-field svg.etwc-icon-off {
+.ekwc-switch-field svg.ekwc-icon-off {
     position: absolute;
     left: -11%;
 }
 
-.etwc-switch-field .etwc-switch-icon svg {
+.ekwc-switch-field .ekwc-switch-icon svg {
     stroke: #94a3b8;
     stroke-width: 2;
 }
 
-.etwc-switch-field .etwc-switch-icon .etwc-icon-on {
+.ekwc-switch-field .ekwc-switch-icon .ekwc-icon-on {
     stroke: #7f54b3;
 }
 
 /*--------------------------- End Switch Field ------------------------------*/
 
 .ekwc-input-group input[type="text"],
-.ekwc-input-group button.etwc-remove-field,
-#etwc_add_field{
+.ekwc-input-group button.ekwc-remove-field,
+#ekwc_add_field{
     padding: 3px 10px;
     border-radius: 2px;
 }
@@ -184,18 +184,66 @@
     cursor: not-allowed;
 }
 
+.ekwc_admin_settings_page .ekwc_admin_settings_page_content table tr.heading th, 
 .ekwc_admin_settings_page .ekwc_admin_settings_page_content table tr th.ekwctitle {
-    font-size: 22px;
-    padding-top: 35px;
+    font-size: 18px;
+    border-left: 4px solid #23282d;
+    background-color: #fafafa;
 }
 
-.etwc-size-field {
+.ekwc-size-field {
     display: flex;
     gap: 20px;
 }
 
-.etwc-size-field input[type="number"] {
+.ekwc-size-field input[type="number"] {
     padding: 3px 10px;
     border-radius: 2px;
     max-width: 163px;
+}
+
+/*---------------------Size chart Admin ------------------------*/
+.ekwc-shortcode-wrap .code.ekwc-size-chart-input {
+    width: 100%;
+}
+
+.ekwc-size-chart-config button.button.ekwc-remove-col,
+.ekwc-size-chart-config button.button.ekwc-add-col {
+    font-weight: 400;
+}
+
+#ekwc_display_rules .ekwc-row label{
+    display: block;
+    padding: 5px 2px;
+}
+
+#ekwc_display_rules .ekwc-row select{
+    padding: 3px 10px;
+    width: 100%;
+}
+
+.ekwc_assign_wrap {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 3px;
+}
+
+.ekwc_assign_wrap  span.select2.select2-container.select2-container--default{
+    width: 100% !important;
+}
+
+.ekwc-size-chart-styles .ekwc-color-picker-row {
+    display: flex;
+    gap: 60px;
+}
+
+.ekwc-size-chart-styles .ekwc-size-color-wrapper {
+    display: flex;
+    gap: 3px;
+    flex-direction: column;
+}
+
+.ekwc_assign_option.products.ekwc_assign_pane .select2-container--default .select2-selection--multiple .select2-selection__choice{
+    padding: 6px !important;
 }

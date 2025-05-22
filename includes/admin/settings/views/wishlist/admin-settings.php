@@ -51,67 +51,68 @@ if( ! class_exists( 'EKWC_Wishlist_Admin_Settings' ) ):
                     'default'    => '',
                     'name'       => 'ekwc_wishlist_setting[wishlist_page]',
                     'options'    => self::get_pages_list(),
-                    'desc'       => wp_kses_post( 'Pick a page as the main Wishlist page; make sure you add the <span class="code"><code>[etwc_wishlist]</code></span> shortcode into the page content', 'essential-kit-for-woocommerce' ),
+                    'desc'       => wp_kses_post( 'Pick a page as the main Wishlist page; make sure you add the <span class="code"><code>[ekwc_wishlist]</code></span> shortcode into the page content', 'essential-kit-for-woocommerce' ),
                 ),
                 'wishlist_table_setting' => array(
                     'title'      => esc_html__('Table Setting', 'essential-kit-for-woocommerce'),
                     'field_type' => 'ekwctitle',
                     'default'    => '',
                 ),
-                'etwc_price_show' => array(
+                'ekwc_price_show' => array(
                     'title'      => esc_html__('Product price', 'essential-kit-for-woocommerce'),
                     'field_type' => 'ekwcswitch',
                     'default'    => 'yes',
-                    'name'       => 'ekwc_wishlist_setting[etwc_price_show]',
+                    'name'       => 'ekwc_wishlist_setting[ekwc_price_show]',
                     'desc'       => esc_html__('Enable this option to display the product price in the wishlist.', 'essential-kit-for-woocommerce'),
                 ),
-                'etwc_stock_show' => array(
+                'ekwc_stock_show' => array(
                     'title'      => esc_html__('Product stock (availability)', 'essential-kit-for-woocommerce'),
                     'field_type' => 'ekwcswitch',
                     'default'    => 'yes',
-                    'name'       => 'ekwc_wishlist_setting[etwc_stock_show]',
+                    'name'       => 'ekwc_wishlist_setting[ekwc_stock_show]',
                     'desc'       => esc_html__('Enable this option to display product stock status (whether it is available or out of stock) in the wishlist.', 'essential-kit-for-woocommerce'),
                 ),
-                'etwc_show_dateadded' => array(
-                    'title'      => esc_html__('Date added to wishlist', 'essential-kit-for-woocommerce'),
-                    'field_type' => 'ekwcswitch',
-                    'default'    => 'no',
-                    'name'       => 'ekwc_wishlist_setting[etwc_show_dateadded]',
-                    'desc'       => esc_html__('Enable this option to show the date when the product was added to the wishlist.', 'essential-kit-for-woocommerce'),
-                ),
-                'etwc_add_to_cart_show' => array(
+                // 'ekwc_show_dateadded' => array(
+                //     'title'       => esc_html__( 'Date added to wishlist', 'essential-kit-for-woocommerce' ),
+                //     'field_type'  => 'ekwcbuypro',
+                //     'pro_link'    => EKWC_PRO_VERSION_URL,
+                //     'button_text' => esc_html__( 'Buy Pro', 'essential-kit-for-woocommerce' ),
+                //     'description' => esc_html__( 'Enable this option to show the date when the product was added to the wishlist.', 'essential-kit-for-woocommerce' ),
+                //     'default'     => 'no',
+                // ),
+                'ekwc_add_to_cart_show' => array(
                     'title'      => esc_html__('Add to cart option', 'essential-kit-for-woocommerce'),
                     'field_type' => 'ekwcswitch',
                     'default'    => 'yes',
-                    'name'       => 'ekwc_wishlist_setting[etwc_add_to_cart_show]',
+                    'name'       => 'ekwc_wishlist_setting[ekwc_add_to_cart_show]',
                     'desc'       => esc_html__('Enable this option to show the "Add to Cart" button for each product in the wishlist.', 'essential-kit-for-woocommerce'),
                 ),
-                'etwc_left_show_remove' => array(
+                'ekwc_left_show_remove' => array(
                     'title'      => esc_html__('Remove icon (left side)', 'essential-kit-for-woocommerce'),
                     'field_type' => 'ekwcswitch',
                     'default'    => 'yes',
-                    'name'       => 'ekwc_wishlist_setting[etwc_left_show_remove]',
+                    'name'       => 'ekwc_wishlist_setting[ekwc_left_show_remove]',
                     'desc'       => esc_html__('Enable this option to show a remove icon to the left of the product in the wishlist.', 'essential-kit-for-woocommerce'),
                 ),
-                'etwc_right_remove_button' => array(
+                'ekwc_right_remove_button' => array(
                     'title'      => esc_html__('Remove button (right side)', 'essential-kit-for-woocommerce'),
                     'field_type' => 'ekwcswitch',
                     'default'    => 'no',
-                    'name'       => 'ekwc_wishlist_setting[etwc_right_remove_button]',
+                    'name'       => 'ekwc_wishlist_setting[ekwc_right_remove_button]',
                     'desc'       => esc_html__('Enable this option to display a "Remove" button to the right of the product in the wishlist.', 'essential-kit-for-woocommerce'),
                 ),
-                'etwc_redirect_to_cart' => array(
+                'ekwc_redirect_to_cart' => array(
                     'title'      => esc_html__('Redirect to cart', 'essential-kit-for-woocommerce'),
                     'field_type' => 'ekwcswitch',
                     'default'    => 'no',
-                    'name'       => 'ekwc_wishlist_setting[etwc_redirect_to_cart]',
+                    'name'       => 'ekwc_wishlist_setting[ekwc_redirect_to_cart]',
                     'desc'       => esc_html__('Redirect users to the cart page when they add a product to the cart from the wishlist page.', 'essential-kit-for-woocommerce'),
                 ),
-                'etwc_remove_on_add_to_cart' => array(
+                'ekwc_remove_on_add_to_cart' => array(
                     'title'      => esc_html__('Remove items when added to the cart', 'essential-kit-for-woocommerce'),
                     'field_type' => 'ekwcswitch',
                     'default'    => 'no',
-                    'name'       => 'ekwc_wishlist_setting[etwc_remove_on_add_to_cart]',
+                    'name'       => 'ekwc_wishlist_setting[ekwc_remove_on_add_to_cart]',
                     'desc'       => esc_html__('Remove the product from the wishlist after it has been added to the cart.', 'essential-kit-for-woocommerce'),
                 ),
                 'share_setting' => array(
@@ -119,58 +120,58 @@ if( ! class_exists( 'EKWC_Wishlist_Admin_Settings' ) ):
                     'field_type' => 'ekwctitle',
                     'default'    => '',
                 ),
-                'etwc_share_wishlist' => array(
+                'ekwc_share_wishlist' => array(
                     'title'      => esc_html__('Share wishlist', 'essential-kit-for-woocommerce'),
                     'field_type' => 'ekwcswitch',
                     'default'    => 'no',
-                    'name'       => 'ekwc_wishlist_setting[etwc_share_wishlist]',
+                    'name'       => 'ekwc_wishlist_setting[ekwc_share_wishlist]',
                     'desc'       => esc_html__('Enable this option to let users share their wishlist on social media.', 'essential-kit-for-woocommerce'),
-                    'data_show'  => '.etwc_share_wishlist',
+                    'data_show'  => '.ekwc_share_wishlist',
                 ),
-                'etwc_share_facebook' => array(
+                'ekwc_share_facebook' => array(
                     'title'      => esc_html__('Share on Facebook', 'essential-kit-for-woocommerce'),
                     'field_type' => 'ekwcswitch',
                     'default'    => 'yes',
-                    'name'       => 'ekwc_wishlist_setting[etwc_share_facebook]',
+                    'name'       => 'ekwc_wishlist_setting[ekwc_share_facebook]',
                     'desc'       => esc_html__('Allow users to share their wishlist on Facebook.', 'essential-kit-for-woocommerce'),
-                    'style'      => 'etwc_share_wishlist.yes',
-                    'extra_class'=> 'etwc_share_wishlist'
+                    'style'      => 'ekwc_share_wishlist.yes',
+                    'extra_class'=> 'ekwc_share_wishlist'
                 ),
-                'etwc_share_twitter' => array(
+                'ekwc_share_twitter' => array(
                     'title'      => esc_html__('Tweet on Twitter (X)', 'essential-kit-for-woocommerce'),
                     'field_type' => 'ekwcswitch',
                     'default'    => 'yes',
-                    'name'       => 'ekwc_wishlist_setting[etwc_share_twitter]',
+                    'name'       => 'ekwc_wishlist_setting[ekwc_share_twitter]',
                     'desc'       => esc_html__('Allow users to share their wishlist on Twitter (X).', 'essential-kit-for-woocommerce'),
-                    'style'      => 'etwc_share_wishlist.yes',
-                    'extra_class'=> 'etwc_share_wishlist'
+                    'style'      => 'ekwc_share_wishlist.yes',
+                    'extra_class'=> 'ekwc_share_wishlist'
                 ),
-                'etwc_share_pinterest' => array(
+                'ekwc_share_pinterest' => array(
                     'title'      => esc_html__('Pin on Pinterest', 'essential-kit-for-woocommerce'),
                     'field_type' => 'ekwcswitch',
                     'default'    => 'yes',
-                    'name'       => 'ekwc_wishlist_setting[etwc_share_pinterest]',
+                    'name'       => 'ekwc_wishlist_setting[ekwc_share_pinterest]',
                     'desc'       => esc_html__('Allow users to share their wishlist on Pinterest.', 'essential-kit-for-woocommerce'),
-                    'style'      => 'etwc_share_wishlist.yes',
-                    'extra_class'=> 'etwc_share_wishlist'
+                    'style'      => 'ekwc_share_wishlist.yes',
+                    'extra_class'=> 'ekwc_share_wishlist'
                 ),
-                'etwc_share_email' => array(
+                'ekwc_share_email' => array(
                     'title'      => esc_html__('Share by email', 'essential-kit-for-woocommerce'),
                     'field_type' => 'ekwcswitch',
                     'default'    => 'yes',
-                    'name'       => 'ekwc_wishlist_setting[etwc_share_email]',
+                    'name'       => 'ekwc_wishlist_setting[ekwc_share_email]',
                     'desc'       => esc_html__('Allow users to share their wishlist via email.', 'essential-kit-for-woocommerce'),
-                    'style'      => 'etwc_share_wishlist.yes',
-                    'extra_class'=> 'etwc_share_wishlist'
+                    'style'      => 'ekwc_share_wishlist.yes',
+                    'extra_class'=> 'ekwc_share_wishlist'
                 ),
-                'etwc_share_whatsapp' => array(
+                'ekwc_share_whatsapp' => array(
                     'title'      => esc_html__('Share on WhatsApp', 'essential-kit-for-woocommerce'),
                     'field_type' => 'ekwcswitch',
                     'default'    => 'yes',
-                    'name'       => 'ekwc_wishlist_setting[etwc_share_whatsapp]',
+                    'name'       => 'ekwc_wishlist_setting[ekwc_share_whatsapp]',
                     'desc'       => esc_html__('Allow users to share their wishlist on WhatsApp.', 'essential-kit-for-woocommerce'),
-                    'style'      => 'etwc_share_wishlist.yes',
-                    'extra_class'=> 'etwc_share_wishlist'
+                    'style'      => 'ekwc_share_wishlist.yes',
+                    'extra_class'=> 'ekwc_share_wishlist'
                 ),
             );
             
@@ -216,8 +217,8 @@ if( ! class_exists( 'EKWC_Wishlist_Admin_Settings' ) ):
                     'name'       => 'ekwc_wishlist_setting[added_to_wishlist_icon]',
                     'default'    => EKWC_URL . 'assets/img/wishlist/heart.svg',
                 ),
-                'share_setting' => array(
-                    'title'      => esc_html__('Wishlist page', 'essential-kit-for-woocommerce'),
+                'add_to_cart_setting' => array(
+                    'title'      => esc_html__('Add To cart Button', 'essential-kit-for-woocommerce'),
                     'field_type' => 'ekwctitle',
                     'default'    => '',
                 ),
@@ -244,6 +245,11 @@ if( ! class_exists( 'EKWC_Wishlist_Admin_Settings' ) ):
                     'field_type' => 'ekwccolor',
                     'name'       => 'ekwc_wishlist_setting[add_to_cart_btn_hover_bg_color]',
                     'default'    => '#cc5500',
+                ),
+                'share_setting' => array(
+                    'title'      => esc_html__('Share Icon Setting', 'essential-kit-for-woocommerce'),
+                    'field_type' => 'ekwctitle',
+                    'default'    => '',
                 ),
                 'facebook_icon' => array(
                     'title'      => esc_html__( 'Facebook share button icon', 'essential-kit-for-woocommerce' ),
@@ -319,14 +325,14 @@ if( ! class_exists( 'EKWC_Wishlist_Admin_Settings' ) ):
                     'desc'       => esc_html__( 'Customize the text displayed when a product is already in the wishlist.', 'essential-kit-for-woocommerce' ),
                 ),
                 'create_wishlist_btn_text' => array(
-                    'title'      => esc_html__( 'Create Wishlist Button Text', 'essential-kit-for-woocommerce' ),
-                    'field_type' => 'ekwctext',
-                    'name'       => 'ekwc_wishlist_setting[create_wishlist_btn_text]',
-                    'default'    => esc_html__( 'Create wishlist', 'essential-kit-for-woocommerce' ),
-                    'desc'       => esc_html__( 'Customize the text displayed for create wishlist button.', 'essential-kit-for-woocommerce' ),
+                    'title'       => esc_html__( 'Create Wishlist Button Text', 'essential-kit-for-woocommerce' ),
+                    'field_type'  => 'ekwcbuypro',
+                    'pro_link'    => EKWC_PRO_VERSION_URL,
+                    'button_text' => esc_html__( 'Buy Pro', 'essential-kit-for-woocommerce' ),
+                    'default'     => '',
                 ),
                 'wishlist_page' => array(
-                    'title'      => esc_html__('Wishlist page', 'essential-kit-for-woocommerce'),
+                    'title'      => esc_html__('Wishlist Page Label', 'essential-kit-for-woocommerce'),
                     'field_type' => 'ekwctitle',
                     'default'    => '',
                 ),

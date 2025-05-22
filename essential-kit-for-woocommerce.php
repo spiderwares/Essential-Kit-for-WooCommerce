@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name:       Essential Kit For Woocommerce
- * Description:       Add multi-currency support to your WooCommerce store. Automatically convert prices and allow customers to switch currencies with ease.
- * Version:           1.0.0
+ * Description:       A powerful, all-in-one toolkit to enhance your WooCommerce store. Includes must-have features like product compare, quick view, wishlist, free shipping bar, multi-currency support, and more — all designed to boost conversions and improve the customer experience.
+ * Version:           1.0.7
  * Requires at least: 5.2
  * Requires PHP:      7.4
  * Author:            jthemesstudio
@@ -26,7 +26,7 @@ if ( ! defined( 'EKWC_BASENAME' ) ) :
 endif;
 
 if ( ! defined( 'EKWC_VERSION' ) ) :
-    define( 'EKWC_VERSION', '1.0.0' ); // Define the plugin version.
+    define( 'EKWC_VERSION', '1.0.7' ); // Define the plugin version.
 endif;
 
 if ( ! defined( 'EKWC_PATH' ) ) :
@@ -53,12 +53,8 @@ if ( ! defined( 'EKWC_DISCUSSION' ) ) :
     define( 'EKWC_DISCUSSION', 'https://jthemes.com/' ); // Define the plugin directory URL.
 endif;
 
-if ( ! defined( 'EKWC_UPGRADE_URL' ) ) :
-    define( 'EKWC_UPGRADE_URL', 'https://jthemes.com/' ); // Define the upgrade URL.
-endif;
-
 if ( ! defined( 'EKWC_PRO_VERSION_URL' ) ) :
-    define( 'EKWC_PRO_VERSION_URL', 'https://jthemes.com/' ); // Define the Pro Version URL.
+    define( 'EKWC_PRO_VERSION_URL', 'https://codecanyon.net/item/essential-kit-for-woocommerce/57741240' ); // Define the Pro Version URL.
 endif;
 
 if ( ! class_exists( 'EKWC', false ) ) :

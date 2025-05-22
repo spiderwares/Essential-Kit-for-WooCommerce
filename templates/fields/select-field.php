@@ -7,7 +7,7 @@
 defined( 'ABSPATH' ) || exit; ?>
 
 <td>
-    <div class="etwc-select-field">
+    <div class="ekwc-select-field">
         <select id="<?php echo esc_attr( $field_Key ); ?>" 
                 name="<?php echo isset( $field['name'] ) ? esc_attr( $field['name'] ) : ''; ?>"
                 data-hide="<?php echo isset( $field['data_hide'] ) ? esc_attr( $field['data_hide'] ) : '';  ?>">
